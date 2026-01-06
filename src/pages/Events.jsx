@@ -16,7 +16,7 @@ export default function Events() {
     "Misc",
   ];
 
-  const poster = "https://i.ibb.co/TDHQb4Kf/HACKATHON-POSTER.png";
+  const poster = "https://i.ibb.co/zVPWRxdp/VECTOR-STRIKE-3.png";
 
   const events = [
     { id: 1, title: "Code Combat", category: "Coding", date: "Feb 18 (Wed)", venue: "206 & 207", description: "Competitive coding battle testing logic, speed, and accuracy.", formLink: "https://forms.gle/xxx" },
