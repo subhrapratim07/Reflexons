@@ -89,7 +89,7 @@ export default function Footer() {
 
       {/* Bottom */}
       <div className="mt-10 pt-4 border-t border-slate-800 text-center text-xs text-slate-500">
-        © {new Date().getFullYear()} REFLEXONS • UNIVERSITY OF CALCUTTA
+        © {new Date().getFullYear()} REFLEXONS • CSE • UNIVERSITY OF CALCUTTA
       </div>
 
       {/* Social Button Style */}
