@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+/* ================= BASE STYLES ================= */
+@layer base {
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #020617;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #1e293b;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #06b6d4;
+  }
+
+  body {
+    @apply bg-slate-950 text-white antialiased;
+    margin: 0;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* ================= ANIMATIONS ================= */
+@layer utilities {
+  .fade-up {
+    animation: fadeUp 0.9s ease-out forwards;
+  }
+
+  .fade-up-delay {
+    animation: fadeUp 1.2s ease-out forwards;
+  }
+
+  .fade-up-slow {
+    animation: fadeUp 1.6s ease-out forwards;
+  }
+
+  .glow-pulse {
+    animation: glowPulse 3s ease-in-out infinite;
+  }
+
+  .float-slow {
+    animation: floatSlow 6s ease-in-out infinite;
+  }
+
+  .data-flow {
+    animation: dataflow 6s linear infinite;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes glowPulse {
+    0%, 100% {
+      text-shadow: 0 0 12px rgba(6,182,212,0.4);
+    }
+    50% {
+      text-shadow: 0 0 26px rgba(6,182,212,0.7);
+    }
+  }
+
+  @keyframes floatSlow {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes dataflow {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(200%);
+    }
+  }
+}
