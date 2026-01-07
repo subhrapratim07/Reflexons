@@ -72,7 +72,7 @@ export default function Footer() {
 
             {/* Facebook */}
             <a
-              href="https://www.facebook.com/CUCSE.Reflexons/"
+              href="https://www.facebook.com/share/1BzSaETcmG/"
               target="_blank"
               rel="noreferrer"
               className="social-btn"
