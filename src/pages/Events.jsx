@@ -25,7 +25,7 @@ export default function Events() {
       venue: "206 & 207",
       description: "Competitive coding battle testing logic, speed, and accuracy.",
       formLink: "https://forms.gle/xxx",
-      image: "https://i.ibb.co/TDHQb4Kf/HACKATHON-POSTER.png",
+      image: "https://i.ibb.co/r2QHBVsQ/HACKATHON-POSTER-3.png",
     },
     {
       id: 2,
@@ -35,7 +35,7 @@ export default function Events() {
       venue: "TBA",
       description: "Mathematics-based integration solving challenge.",
       formLink: "https://forms.gle/xxx",
-      image: "https://i.ibb.co/TDHQb4Kf/HACKATHON-POSTER.png",
+      image: "https://i.ibb.co/r2QHBVsQ/HACKATHON-POSTER-3.png",
     },
     {
       id: 3,
@@ -45,7 +45,7 @@ export default function Events() {
       venue: "Online",
       description: "Cybersecurity challenge to exploit and defend systems.",
       formLink: "https://forms.gle/xxx",
-      image: "https://i.ibb.co/TDHQb4Kf/HACKATHON-POSTER.png",
+      image: "https://i.ibb.co/r2QHBVsQ/HACKATHON-POSTER-3.png",
     },
     {
       id: 4,
@@ -66,7 +66,7 @@ export default function Events() {
       venue: "206 / 404 / 405",
       description: "Classic battle of minds and strategy.",
       formLink: "https://forms.gle/xxx",
-      image: "https://i.ibb.co/TDHQb4Kf/HACKATHON-POSTER.png",
+      image: "https://i.ibb.co/r2QHBVsQ/HACKATHON-POSTER-3.png",
     },
     {
       id: 6,
@@ -76,7 +76,7 @@ export default function Events() {
       venue: "206",
       description: "Fast-paced quiz testing knowledge across domains.",
       formLink: "https://forms.gle/xxx",
-      image: "https://i.ibb.co/TDHQb4Kf/HACKATHON-POSTER.png",
+      image: "https://i.ibb.co/r2QHBVsQ/HACKATHON-POSTER-3.png",
     },
     {
       id: 7,
@@ -86,7 +86,7 @@ export default function Events() {
       venue: "206",
       description: "Showcase critical thinking and persuasive speaking.",
       formLink: "https://forms.gle/xxx",
-      image: "https://i.ibb.co/TDHQb4Kf/HACKATHON-POSTER.png",
+      image: "https://i.ibb.co/r2QHBVsQ/HACKATHON-POSTER-3.png",
     },
     {
       id: 8,
@@ -96,7 +96,7 @@ export default function Events() {
       venue: "206 / 209 / 403",
       description: "Logic-based number puzzle competition.",
       formLink: "https://forms.gle/xxx",
-      image: "https://i.ibb.co/TDHQb4Kf/HACKATHON-POSTER.png",
+      image: "https://i.ibb.co/r2QHBVsQ/HACKATHON-POSTER-3.png",
     },
     {
       id: 9,
@@ -106,7 +106,7 @@ export default function Events() {
       venue: "TBA",
       description: "Social deduction game of lies, logic, and deception.",
       formLink: "https://forms.gle/xxx",
-      image: "https://i.ibb.co/TDHQb4Kf/HACKATHON-POSTER.png",
+      image: "https://i.ibb.co/r2QHBVsQ/HACKATHON-POSTER-3.png",
     },
 
     {
@@ -117,7 +117,7 @@ export default function Events() {
       venue: "GF / 404 / 405 / 403",
       description: "Battle royale esports showdown.",
       formLink: "https://forms.gle/xxx",
-      image: "https://i.ibb.co/TDHQb4Kf/HACKATHON-POSTER.png",
+      image: "https://i.ibb.co/r2QHBVsQ/HACKATHON-POSTER-3.png",
     },
     {
       id: 11,
@@ -127,7 +127,7 @@ export default function Events() {
       venue: "GF / 404 / 405 / 403",
       description: "Fast-paced mobile esports competition.",
       formLink: "https://forms.gle/xxx",
-      image: "https://i.ibb.co/TDHQb4Kf/HACKATHON-POSTER.png",
+      image: "https://i.ibb.co/zVPWRxdp/VECTOR-STRIKE-3.png",
     },
     {
       id: 12,
@@ -137,7 +137,7 @@ export default function Events() {
       venue: "206",
       description: "Tactical shooter esports tournament.",
       formLink: "https://forms.gle/xxx",
-      image: "https://i.ibb.co/TDHQb4Kf/HACKATHON-POSTER.png",
+      image: "https://i.ibb.co/zVPWRxdp/VECTOR-STRIKE-3.png",
     },
     {
       id: 13,
@@ -147,7 +147,7 @@ export default function Events() {
       venue: "209",
       description: "EA FC competitive football gaming.",
       formLink: "https://forms.gle/xxx",
-      image: "https://i.ibb.co/TDHQb4Kf/HACKATHON-POSTER.png",
+      image: "https://i.ibb.co/zVPWRxdp/VECTOR-STRIKE-3.png",
     },
     {
       id: 14,
@@ -157,7 +157,7 @@ export default function Events() {
       venue: "Online",
       description: "Competitive football esports tournament.",
       formLink: "https://forms.gle/xxx",
-      image: "https://i.ibb.co/TDHQb4Kf/HACKATHON-POSTER.png",
+      image: "https://i.ibb.co/zVPWRxdp/VECTOR-STRIKE-3.png",
     },
 
     {
@@ -168,7 +168,7 @@ export default function Events() {
       venue: "TBA",
       description: "Race autonomous robots through challenging tracks.",
       formLink: "https://forms.gle/xxx",
-      image: "https://i.ibb.co/TDHQb4Kf/HACKATHON-POSTER.png",
+      image: "https://i.ibb.co/zVPWRxdp/VECTOR-STRIKE-3.png",
     },
 
     {
@@ -179,7 +179,7 @@ export default function Events() {
       venue: "Campus Ground",
       description: "Fast-paced badminton matches testing agility and endurance.",
       formLink: "https://forms.gle/xxx",
-      image: "https://i.ibb.co/TDHQb4Kf/HACKATHON-POSTER.png",
+      image: "https://i.ibb.co/zVPWRxdp/VECTOR-STRIKE-3.png",
     },
     {
       id: 17,
@@ -199,7 +199,7 @@ export default function Events() {
       venue: "Campus Ground",
       description: "Full-scale cricket tournament at campus ground.",
       formLink: "https://forms.gle/xxx",
-      image: "https://i.ibb.co/TDHQb4Kf/HACKATHON-POSTER.png",
+      image: "https://i.ibb.co/zVPWRxdp/VECTOR-STRIKE-3.png",
     },
 
     {
@@ -210,7 +210,7 @@ export default function Events() {
       venue: "206 / 207",
       description: "Solve clues and race against time to uncover the treasure.",
       formLink: "https://forms.gle/xxx",
-      image: "https://i.ibb.co/TDHQb4Kf/HACKATHON-POSTER.png",
+      image: "https://i.ibb.co/zVPWRxdp/VECTOR-STRIKE-3.png",
     },
     {
       id: 20,
@@ -220,7 +220,7 @@ export default function Events() {
       venue: "Stage",
       description: "Live band performances competing for glory.",
       formLink: "https://forms.gle/xxx",
-      image: "https://i.ibb.co/TDHQb4Kf/HACKATHON-POSTER.png",
+      image: "https://i.ibb.co/zVPWRxdp/VECTOR-STRIKE-3.png",
     },
   ];
 
