@@ -55,7 +55,7 @@ export default function Events() {
       venue: "206",
       description: "Build innovative solutions in a high-intensity hackathon.",
       formLink: "https://forms.gle/xxx",
-      image: "https://i.ibb.co/TDHQb4Kf/HACKATHON-POSTER.png",
+      image: "https://i.ibb.co/r2QHBVsQ/HACKATHON-POSTER-3.png",
     },
 
     {
