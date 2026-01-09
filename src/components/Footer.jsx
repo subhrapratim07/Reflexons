@@ -32,9 +32,9 @@ export default function Footer() {
             Explore
           </h4>
           <ul className="space-y-2">
+            <li><Link to="/" className="hover:text-cyan-400">Home</Link></li>
             <li><Link to="/events" className="hover:text-cyan-400">Events</Link></li>
             <li><Link to="/OfficialAttire" className="hover:text-cyan-400">Official Attire</Link></li>
-            <li><Link to="/admin" className="hover:text-cyan-400">Admin Portal</Link></li>
           </ul>
         </div>
 
