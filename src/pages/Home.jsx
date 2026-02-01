@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 
 /* ================= COUNTDOWN COMPONENT ================= */
 function Countdown() {
-  const targetDate = new Date("2026-02-17T00:00:00").getTime();
+  const targetDate = new Date("2026-02-27T00:00:00").getTime();
   const [timeLeft, setTimeLeft] = useState({});
 
   useEffect(() => {
@@ -32,7 +32,7 @@ function Countdown() {
   return (
     <div className="mt-10">
       <p className="text-xs sm:text-sm uppercase tracking-[0.4em] text-slate-400 mb-6">
-        Final Day Countdown • 17 Feb 2026
+        Final Day Countdown • 27 Feb 2026
       </p>
 
       <div className="flex justify-center gap-3 sm:gap-6 flex-wrap">
@@ -108,7 +108,7 @@ export default function Home() {
 
     {/* Timeline Wrapper */}
     <div className="relative overflow-x-auto pb-10">
-      <div className="min-w-[2000px] md:min-w-[2200px] relative">
+      <div className="min-w-[2200px] md:min-w-[2200px] relative">
 
         {/* TIMELINE LINE */}
         <div
@@ -120,21 +120,21 @@ export default function Home() {
         />
 
         {/* Timeline Items */}
-        <div className="flex justify-between items-center relative gap-6 md:gap-8">
+        <div className="flex justify-between items-center relative gap-8 md:gap-8">
           {[
-            { date: "FEB 17", events: ["Integration Bee", "BOTC"] },
-            { date: "FEB 18", events: ["Code Combat", "Sudoku", "BGMI"] },
-            { date: "FEB 19", events: ["Treasure Hunt"] },
-            { date: "FEB 20", events: ["Badminton"] },
-            { date: "FEB 21", events: ["Football"] },
-            { date: "FEB 22", events: ["Cricket"] },
-            { date: "FEB 23", events: ["Hackathon"] },
-            { date: "FEB 24", events: ["Debate", "Chess"] },
-            { date: "FEB 25", events: ["Quiz", "Free Fire"] },
-            { date: "FEB 26", events: ["Valorant", "EAFC"] },
-            { date: "FEB 27", events: ["Valorant", "Robo Race"] },
-            { date: "FEB 28", events: ["Internal Event"] },
-            { date: "MAR 01", events: ["External Event"] },
+            { date: "FEB 27", events: ["Integration Bee", "BOTC"] },
+            { date: "FEB 28", events: ["Code Combat", "Sudoku" ] },
+            { date: "MAR 05", events: ["Treasure Hunt","BGMI"] },
+            { date: "MAR 06", events: ["Badminton"] },
+            { date: "MAR 07", events: ["Football"] },
+            { date: "MAR 08", events: ["Cricket"] },
+            { date: "MAR 09", events: ["Hackathon"] },
+            { date: "MAR 10", events: ["Debate", "Chess"] },
+            { date: "MAR 11", events: ["Quiz", "Free Fire"] },
+            { date: "MAR 12", events: ["Valorant", "EAFC"] },
+            { date: "MAR 13", events: ["Valorant", "Robo Race"] },
+            { date: "MAR 14", events: ["Internal Event"] },
+            { date: "MAR 15", events: ["External Event"] },
           ].map((item, index) => (
             <button
               key={index}
@@ -280,10 +280,7 @@ export default function Home() {
             The department is recognized for its elite academic standards, enjoying multiple phases of 
             <span className="text-cyan-400 font-semibold"> UGC-SAP (DRS/DSA)</span> and <span className="text-cyan-400 font-semibold">DST-FIST</span> support.
           </p>
-          <div className="inline-block bg-cyan-500/10 border border-cyan-500/30 p-4 rounded-xl mt-4">
-            <p className="text-[10px] uppercase tracking-widest text-cyan-500 font-bold mb-1">Current Base</p>
-            <p className="text-white font-medium text-xs">Technology Campus, Sector 3, Salt Lake City, Kolkata</p>
-          </div>
+         
         </div>
       </div>
 
