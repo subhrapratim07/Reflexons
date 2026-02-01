@@ -339,6 +339,49 @@ export default function Home() {
   </div>
 </section>
 
+{/* ================= COMMITTEE SECTION ================= */}
+<section className="py-20 bg-slate-950 px-6">
+  <div className="max-w-7xl mx-auto">
+    <h2 className="text-3xl md:text-5xl font-black uppercase mb-16 text-center italic tracking-tighter">
+      The <span className="text-cyan-500">Committee</span>
+    </h2>
+    
+    {/* Executive Tier */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 max-w-4xl mx-auto">
+      {[
+        { name: "Richik Mallick", role: "General Secretary" },
+        { name: "Subhashish Mukherjee & Arkopravo Saha", role: "Asst. General Secretary" }
+      ].map((member, idx) => (
+        <div key={idx} className="text-center p-8 bg-slate-900/40 border border-slate-800 rounded-3xl hover:border-cyan-500/50 transition-all group">
+          <h3 className="text-xl font-bold uppercase tracking-widest text-white group-hover:text-cyan-400 transition-colors">{member.name}</h3>
+          <p className="text-xs text-slate-500 uppercase tracking-[0.3em] mt-2">{member.role}</p>
+        </div>
+      ))}
+    </div>
+
+    {/* Working Committee Tier */}
+    <h3 className="text-center text-slate-400 uppercase tracking-[0.4em] text-sm mb-10 font-bold">Secretaries & Leads</h3>
+    <div className="flex flex-wrap justify-center gap-6">
+      {[
+        { name: "Debmalya Ghosh", role: "Graphics Designer" },
+        { name: "Soumili Saha", role: "Treasurer" },
+        { name: "Debasmita Sen & Tirtharoop Banerjee", role: "Asst. Treasurer" },
+        { name: "Shaswata Mukherjee", role: "Indoor Games Secretary" },
+        { name: "Mafyul Islam", role: "Outdoor Games Secretary" },
+        { name: "Chayan Maity & Subhra Pratim Mondal", role: "Cultural Secretary" }
+      ].map((member, idx) => (
+        <div key={idx} className="px-6 py-5 bg-slate-900/30 border border-white/5 rounded-xl text-center min-w-[240px] hover:bg-slate-900/60 transition group">
+          <p className="text-sm font-bold uppercase text-slate-200 group-hover:text-white transition-colors">
+            {member.name}
+          </p>
+          <p className="text-[10px] uppercase tracking-wider text-cyan-600 font-semibold mt-1">
+            {member.role}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* ================= GALLERY ================= */}
 <section className="py-10 px-6 bg-slate-950">
@@ -383,6 +426,64 @@ export default function Home() {
     </div>
   </div>
 </section>
+  
+  {/* ================= CONTACT US (MODIFIED) ================= */}
+      <section className="py-24 px-6 bg-slate-950 relative">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12">
+          {/* Contact Details */}
+          <div className="space-y-8">
+            <h2 className="text-4xl font-black uppercase italic">Contact <span className="text-cyan-500">Us</span></h2>
+            
+            <div className="grid gap-6">
+              <div className="p-6 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl">
+                <p className="text-cyan-500 text-xs font-bold uppercase tracking-widest mb-4">Event Inquiries</p>
+                <div className="flex justify-between items-center mb-4">
+                  <div>
+                    <p className="font-bold">Shaswata Mukherjee</p>
+                    <p className="text-slate-400 text-sm">+91 93301 29904</p>
+                  </div>
+                  <div className="p-3 bg-cyan-500/10 rounded-full text-cyan-500">📞</div>
+                </div>
+                <div className="flex justify-between items-center">
+                  <div>
+                    <p className="font-bold">Soumili Saha</p>
+                    <p className="text-slate-400 text-sm">+91 94331 69204</p>
+                  </div>
+                  <div className="p-3 bg-cyan-500/10 rounded-full text-cyan-500">📞</div>
+                </div>
+              </div>
+
+              <div className="p-6 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl">
+                <p className="text-cyan-500 text-xs font-bold uppercase tracking-widest mb-4">PR Inquiries</p>
+                <div className="flex justify-between items-center mb-4">
+                  <div>
+                    <p className="font-bold">Debmalya Ghosh</p>
+                    <p className="text-slate-400 text-sm">+91 99037 83336</p>
+                  </div>
+                  <div className="p-3 bg-cyan-500/10 rounded-full text-cyan-500">📞</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Address Card */}
+          <div className="p-8 bg-cyan-900/20 backdrop-blur-xl border border-cyan-500/20 rounded-3xl flex flex-col justify-center">
+            <h3 className="text-2xl font-black uppercase mb-6 tracking-tighter">Address</h3>
+            <div className="space-y-4 text-slate-300">
+              <p>JD-2, Sector 3,</p>
+              <p>Salt Lake City, Calcutta University (Technology Campus),</p>
+              <p className="font-bold text-white">Kolkata - 700098, West Bengal, India</p>
+            </div>
+            
+            <div className="mt-10 pt-10 border-t border-white/10">
+              <p className="text-xs uppercase text-slate-500 tracking-widest mb-2">General Secretary</p>
+              <p className="text-xl font-bold">Richik Mallick</p>
+              <p className="text-cyan-400">+91 89067 43263</p>
+              <p className="text-slate-400 text-sm">reflexonscucse.tech@gmail.com</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
     </div>
     
