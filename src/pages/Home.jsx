@@ -224,30 +224,60 @@ export default function Home() {
         </Link>
       </section>
 
-{/* ================= SPONSORS ================= */}
-<section className="py-10 bg-slate-900/50 px-6">
-  <div className="max-w-6xl mx-auto text-center">
-    <h3 className="text-xl uppercase tracking-widest text-slate-400 mb-8">
-      Our Sponsors
-    </h3>
+{/* ================= SPONSORS SCROLL ================= */}
+<section className="py-10 bg-slate-900/50 overflow-hidden">
+  <h3 className="text-xl uppercase tracking-widest text-slate-400 text-center mb-6">
+    Previous Sponsors
+  </h3>
 
-    <div className="flex flex-wrap justify-center items-center gap-12">
+  <div className="relative w-full overflow-hidden">
+    <div className="flex w-max animate-scroll gap-14 items-center">
       {[
-        "https://i.ibb.co/ycSKjWrf/mdcomputers.png",
-        "https://i.ibb.co/dwrxCdfc/redbull.png",
-        "https://i.ibb.co/PG0YNq7z/919fm.png",
-        "https://i.ibb.co/4Zf85h1L/mioamore.png",
+        "/src/assets/Sponsors/919fm.png",
+        "/src/assets/Sponsors/amd.png",
+        "/src/assets/Sponsors/apollo.png",
+        "/src/assets/Sponsors/Calcutta_times.png",
+        "/src/assets/Sponsors/Eilm.png",
+        "/src/assets/Sponsors/mdcomputers.png",
+        
+        "/src/assets/Sponsors/nimbus.png",
+        
+        "/src/assets/Sponsors/Redfm.png",
+        "/src/assets/Sponsors/Rene.png",
+        "/src/assets/Sponsors/RiceEdu.png",
+        "/src/assets/Sponsors/Sangbad_Pratidin.png",
+        "/src/assets/Sponsors/SUSE.png",
+        "/src/assets/Sponsors/The_Telegraph.png",
+        "/src/assets/Sponsors/ZenMobile.png",
+
+        /* duplicate for seamless loop */
+        "/src/assets/Sponsors/919fm.png",
+        "/src/assets/Sponsors/amd.png",
+        "/src/assets/Sponsors/apollo.png",
+        "/src/assets/Sponsors/Calcutta_times.png",
+        "/src/assets/Sponsors/Eilm.png",
+        "/src/assets/Sponsors/mdcomputers.png",
+        
+        "/src/assets/Sponsors/nimbus.png",
+        
+        "/src/assets/Sponsors/Redfm.png",
+        "/src/assets/Sponsors/Rene.png",
+        "/src/assets/Sponsors/RiceEdu.png",
+        "/src/assets/Sponsors/Sangbad_Pratidin.png",
+        "/src/assets/Sponsors/SUSE.png",
+        "/src/assets/Sponsors/The_Telegraph.png",
+        "/src/assets/Sponsors/ZenMobile.png",
       ].map((img, index) => (
         <img
           key={index}
-          src={`${img}?q=80&w=400`}
-          alt={`Sponsor ${index + 1}`}
+          src={img}
+          alt="Sponsor"
           className="
             h-12 sm:h-14 md:h-16
-            w-auto
-            object-contain
-            drop-shadow-[0_0_12px_rgba(255,255,255,0.45)]
-            drop-shadow-[0_0_28px_rgba(255,255,255,0.45)]
+            w-auto object-contain
+            opacity-90
+            hover:opacity-100
+            transition
           "
           loading="lazy"
         />
@@ -255,6 +285,8 @@ export default function Home() {
     </div>
   </div>
 </section>
+
+
 
 
 
