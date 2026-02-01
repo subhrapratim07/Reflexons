@@ -433,7 +433,7 @@ export default function Home() {
       ].map((s, i) => (
         <motion.img
           key={i}
-          src={`/sponsors/${s}.png`}
+          src={`/Sponsors/${s}.png`}
 
           alt={s}
           loading="lazy"
