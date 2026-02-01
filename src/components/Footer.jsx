@@ -35,7 +35,6 @@ export default function Footer() {
             <li><Link to="/" className="hover:text-cyan-400">Home</Link></li>
             <li><Link to="/events" className="hover:text-cyan-400">Events</Link></li>
             <li><Link to="/OfficialAttire" className="hover:text-cyan-400">Official Attire</Link></li>
-            
           </ul>
         </div>
 
@@ -73,7 +72,7 @@ export default function Footer() {
 
             {/* Facebook */}
             <a
-              href="https://www.facebook.com/CUCSE.Reflexons/"
+              href="https://www.facebook.com/share/1BzSaETcmG/"
               target="_blank"
               rel="noreferrer"
               className="social-btn"
@@ -90,7 +89,7 @@ export default function Footer() {
 
       {/* Bottom */}
       <div className="mt-10 pt-4 border-t border-slate-800 text-center text-xs text-slate-500">
-        © {new Date().getFullYear()} REFLEXONS • UNIVERSITY OF CALCUTTA
+        © {new Date().getFullYear()} REFLEXONS • CSE • UNIVERSITY OF CALCUTTA
       </div>
 
       {/* Social Button Style */}
