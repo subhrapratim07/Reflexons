@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 
 /* ================= COUNTDOWN COMPONENT ================= */
 function Countdown() {
-  const targetDate = new Date("2026-02-17T00:00:00").getTime();
+  const targetDate = new Date("2026-02-27T00:00:00").getTime();
   const [timeLeft, setTimeLeft] = useState({});
 
   useEffect(() => {
@@ -32,7 +32,7 @@ function Countdown() {
   return (
     <div className="mt-10">
       <p className="text-xs sm:text-sm uppercase tracking-[0.4em] text-slate-400 mb-6">
-        Final Day Countdown • 17 Feb 2026
+        Final Day Countdown • 27 Feb 2026
       </p>
 
       <div className="flex justify-center gap-3 sm:gap-6 flex-wrap">
@@ -97,32 +97,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= ALL SECTIONS GRID ================= */}
-      <section className="py-5 px-6 max-w-7xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-black uppercase mb-16 text-center">
-          All <span className="text-cyan-500">Sections</span>
-        </h2>
-
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-          {[
-            "Coding",
-            "Robotics",
-            "Gaming",
-            "Hackathon",
-            "Talks",
-            "Finance",
-            "Workshops",
-            "Cultural",
-          ].map((item) => (
-            <div
-              key={item}
-              className="bg-slate-900/40 border border-slate-800 rounded-xl p-6 text-center hover:border-cyan-500 transition"
-            >
-              <p className="uppercase tracking-widest text-sm">{item}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+      
 
 {/* ================= EVENT TIMELINE ================= */}
 <section className="py-10 bg-gradient-to-b from-slate-950 to-slate-900 px-6">
@@ -133,7 +108,7 @@ export default function Home() {
 
     {/* Timeline Wrapper */}
     <div className="relative overflow-x-auto pb-10">
-      <div className="min-w-[2000px] md:min-w-[2200px] relative">
+      <div className="min-w-[2200px] md:min-w-[2200px] relative">
 
         {/* TIMELINE LINE */}
         <div
@@ -145,21 +120,21 @@ export default function Home() {
         />
 
         {/* Timeline Items */}
-        <div className="flex justify-between items-center relative gap-6 md:gap-8">
+        <div className="flex justify-between items-center relative gap-8 md:gap-8">
           {[
-            { date: "FEB 17", events: ["Integration Bee", "BOTC"] },
-            { date: "FEB 18", events: ["Code Combat", "Sudoku", "BGMI"] },
-            { date: "FEB 19", events: ["Treasure Hunt"] },
-            { date: "FEB 20", events: ["Badminton"] },
-            { date: "FEB 21", events: ["Football"] },
-            { date: "FEB 22", events: ["Cricket"] },
-            { date: "FEB 23", events: ["Hackathon"] },
-            { date: "FEB 24", events: ["Debate", "Chess"] },
-            { date: "FEB 25", events: ["Quiz", "Free Fire"] },
-            { date: "FEB 26", events: ["Valorant", "EAFC"] },
-            { date: "FEB 27", events: ["Valorant", "Robo Race"] },
-            { date: "FEB 28", events: ["Internal Event"] },
-            { date: "MAR 01", events: ["External Event"] },
+            { date: "FEB 27", events: ["Integration Bee", "BOTC"] },
+            { date: "FEB 28", events: ["Code Combat", "Sudoku" ] },
+            { date: "MAR 05", events: ["Treasure Hunt","BGMI"] },
+            { date: "MAR 06", events: ["Badminton"] },
+            { date: "MAR 07", events: ["Football"] },
+            { date: "MAR 08", events: ["Cricket"] },
+            { date: "MAR 09", events: ["Hackathon"] },
+            { date: "MAR 10", events: ["Debate", "Chess"] },
+            { date: "MAR 11", events: ["Quiz", "Free Fire"] },
+            { date: "MAR 12", events: ["Valorant", "EAFC"] },
+            { date: "MAR 13", events: ["Valorant", "Robo Race"] },
+            { date: "MAR 14", events: ["Internal Event"] },
+            { date: "MAR 15", events: ["External Event"] },
           ].map((item, index) => (
             <button
               key={index}
@@ -278,6 +253,89 @@ export default function Home() {
         />
       ))}
     </div>
+  </div>
+</section>
+
+{/* ================= ABOUT THE DEPARTMENT ================= */}
+
+<section className="py-24 px-6 relative bg-slate-950 overflow-hidden">
+  {/* Background Accents */}
+  <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/5 blur-[120px] rounded-full pointer-events-none" />
+  <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-600/5 blur-[120px] rounded-full pointer-events-none" />
+
+  <div className="max-w-7xl mx-auto space-y-32">
+    
+    {/* 1. DEPARTMENT SECTION (Text Left, Cards Right) */}
+    <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <div className="space-y-6 order-1 lg:order-1">
+        <h2 className="text-4xl md:text-5xl font-black uppercase leading-tight">
+          Legacy of <br />
+          <span className="text-cyan-500">Excellence</span>
+        </h2>
+        <div className="space-y-4 text-slate-300 leading-relaxed text-sm md:text-base">
+          <p>
+            Established in <span className="text-white font-bold">1980</span>, the Department of Computer Science and Engineering at the University of Calcutta is a cornerstone of Indian technological research. Originally founded at Rajabazar Science College, it has played a vital role in shaping the nation's scientific landscape for over four decades.
+          </p>
+          <p>
+            The department is recognized for its elite academic standards, enjoying multiple phases of 
+            <span className="text-cyan-400 font-semibold"> UGC-SAP (DRS/DSA)</span> and <span className="text-cyan-400 font-semibold">DST-FIST</span> support.
+          </p>
+         
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-4 order-2 lg:order-2">
+        {[
+          { label: "Founded", val: "1980" },
+          { label: "UGC Recognition", val: "DSA-II" },
+          { label: "Legacy", val: "40+ Yrs" },
+          { label: "Tech Campus", val: "Salt Lake" }
+        ].map((stat) => (
+          <div key={stat.label} className="p-6 bg-slate-900/40 border border-slate-800 rounded-2xl flex flex-col justify-center items-center text-center hover:border-cyan-500/50 transition">
+            <span className="text-2xl md:text-3xl font-black text-white">{stat.val}</span>
+            <span className="text-[10px] uppercase tracking-tighter text-slate-500 mt-1">{stat.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* 2. REFLEXONS SECTION (Cards Left, Text Right) */}
+    <div className="grid lg:grid-cols-2 gap-16 items-center">
+      {/* Feature List */}
+      <div className="space-y-4 order-2">
+        {[
+          { id: "01", title: "Tech Arena", desc: "Hackathons, Robotics, and Dev-talks." },
+          { id: "02", title: "Grand Reunion", desc: "Connecting 40+ years of tech leaders." },
+          { id: "03", title: "Cultural Pulse", desc: "Nights of music, drama, and memories." }
+        ].map((item) => (
+          <div key={item.id} className="group p-5 bg-slate-900/40 border border-slate-800 rounded-2xl hover:bg-slate-900/60 transition-all">
+            <div className="flex items-center gap-5">
+              <div className="text-2xl font-black text-cyan-500/20 group-hover:text-cyan-500 transition-colors">{item.id}</div>
+              <div>
+                <h4 className="text-white font-bold uppercase tracking-widest text-sm">{item.title}</h4>
+                <p className="text-xs text-slate-500 mt-0.5">{item.desc}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Description */}
+      <div className="space-y-6 order-1">
+        <h2 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter text-white">
+          The <span className="text-cyan-500">Reflexons</span> <br />Experience
+        </h2>
+        <div className="space-y-4 text-slate-300 text-sm md:text-base leading-relaxed">
+          <p>
+            Born in <span className="text-white font-semibold">1985</span>, Reflexons is the signature Annual Tech Fest and Reunion of CUCSE. It is where the silence of the labs is replaced by the roar of competition.
+          </p>
+          <p>
+            From the intense logic of <span className="text-cyan-400">Coding Combat</span> to the strategic battlegrounds of <span className="text-cyan-400">Robotics</span>, it is a homecoming that bridges generations of engineers under one roof.
+          </p>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
