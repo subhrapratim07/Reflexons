@@ -365,7 +365,7 @@ export default function Home() {
     <h3 className="text-center text-slate-400 uppercase tracking-[0.4em] text-sm mb-10 font-bold">Secretaries & Leads</h3>
     <div className="flex flex-wrap justify-center gap-6">
       {[
-        { name: "Debmalya Ghosh", role: "Graphics Designer" },
+        
         { name: "Soumili Saha", role: "Treasurer" },
         { name: "Debasmita Sen & Tirtharoop Banerjee", role: "Asst. Treasurer" },
         { name: "Shaswata Mukherjee", role: "Indoor Games Secretary" },
