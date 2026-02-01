@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
+import Magnetic from "../components/Magnetic";
+import Reveal from "../components/Reveal";
 
 export default function Events() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -117,7 +120,7 @@ export default function Events() {
       venue: "GF / 404 / 405 / 403",
       description: "Battle royale esports showdown.",
       formLink: "https://forms.gle/xxx",
-      image: "https://i.ibb.co/r2QHBVsQ/HACKATHON-POSTER-3.png",
+      image: "https://i.ibb.co/zVPWRxdp/VECTOR-STRIKE-3.png",
     },
     {
       id: 11,
@@ -231,53 +234,77 @@ export default function Events() {
   );
 
   return (
-    <div className="bg-slate-950 min-h-screen px-4 py-14 text-white">
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -40 }}
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+      className="bg-slate-950 min-h-screen px-4 py-14 text-white"
+    >
       <div className="max-w-7xl mx-auto">
 
-        <h1 className="text-center text-4xl md:text-5xl font-black uppercase mb-10">
-          <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-            Explore Events
-          </span>
-        </h1>
+        {/* Title */}
+        <Reveal>
+          <h1 className="text-center text-4xl md:text-5xl font-black uppercase mb-10">
+            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              Explore Events
+            </span>
+          </h1>
+        </Reveal>
 
-        <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-4 mb-8">
-          <div className="flex flex-wrap gap-3 justify-center">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 rounded-full text-sm font-semibold transition
-                  ${
-                    activeCategory === cat
-                      ? "bg-cyan-500 text-black"
-                      : "bg-slate-900 text-slate-300 hover:text-cyan-400"
-                  }`}
-              >
-                {cat}
-              </button>
-            ))}
+        {/* Categories */}
+        <Reveal>
+          <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-4 mb-8">
+            <div className="flex flex-wrap gap-3 justify-center">
+              {categories.map((cat) => (
+                <Magnetic key={cat}>
+                  <button
+                    onClick={() => setActiveCategory(cat)}
+                    className={`px-4 py-2 rounded-full text-sm font-semibold transition
+                      ${
+                        activeCategory === cat
+                          ? "bg-cyan-500 text-black"
+                          : "bg-slate-900 text-slate-300 hover:text-cyan-400"
+                      }`}
+                  >
+                    {cat}
+                  </button>
+                </Magnetic>
+              ))}
+            </div>
           </div>
-        </div>
+        </Reveal>
 
-        <div className="flex justify-center mb-10">
-          <input
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search events..."
-            className="w-full max-w-md px-5 py-3 rounded-full bg-slate-900
-                       border border-slate-800 text-sm focus:border-cyan-500
-                       focus:outline-none"
-          />
-        </div>
+        {/* Search */}
+        <Reveal>
+          <div className="flex justify-center mb-10">
+            <input
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Search events..."
+              className="w-full max-w-md px-5 py-3 rounded-full bg-slate-900
+                         border border-slate-800 text-sm focus:border-cyan-500
+                         focus:outline-none"
+            />
+          </div>
+        </Reveal>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        {/* Events Grid */}
+        <motion.div
+          layout
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"
+        >
           {filteredEvents.map((event) => {
             const isActive = activeEvent === event.id;
 
             return (
-              <div
+              <motion.div
+                layout
                 key={event.id}
                 onClick={() => setActiveEvent(isActive ? null : event.id)}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
                 className="group relative aspect-[3/4] rounded-2xl overflow-hidden
                            border border-slate-800 hover:border-cyan-500 cursor-pointer"
               >
@@ -320,10 +347,10 @@ export default function Events() {
                     Register →
                   </a>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
 
         {filteredEvents.length === 0 && (
           <p className="text-center text-slate-500 mt-10">
@@ -331,6 +358,6 @@ export default function Events() {
           </p>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }

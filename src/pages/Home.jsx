@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
+import { motion, useMotionValue, useTransform } from "framer-motion";
+import Magnetic from "../components/Magnetic";
 
+import Reveal from "../components/Reveal";
 /* ================= COUNTDOWN COMPONENT ================= */
 function Countdown() {
   const targetDate = new Date("2026-02-27T00:00:00").getTime();
@@ -54,10 +57,113 @@ function Countdown() {
   );
 }
 
+function MouseTrace({ children, className = "" }) {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const translateX = useTransform(x, [-150, 150], [-12, 12]);
+  const translateY = useTransform(y, [-150, 150], [-12, 12]);
+
+  function handleMove(e) {
+    const point = e.touches ? e.touches[0] : e;
+    const rect = e.currentTarget.getBoundingClientRect();
+    x.set(point.clientX - rect.left - rect.width / 2);
+    y.set(point.clientY - rect.top - rect.height / 2);
+  }
+
+  function reset() {
+    x.set(0);
+    y.set(0);
+  }
+
+  return (
+    <motion.div
+      onMouseMove={handleMove}
+      onMouseLeave={reset}
+      onTouchMove={handleMove}
+      onTouchEnd={reset}
+      style={{ x: translateX, y: translateY }}
+      transition={{ type: "spring", stiffness: 120, damping: 20 }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
+const galleryContainer = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+};
+
+const galleryItem = {
+  hidden: {
+    opacity: 0,
+    y: 40,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+const contactContainer = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
+
+const contactItem = {
+  hidden: {
+    opacity: 0,
+    y: 30,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
+/* ================= PAGE TRANSITION ================= */
+const pageVariants = {
+  initial: { opacity: 0, y: 60, filter: "blur(12px)" },
+  animate: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0)",
+    transition: { duration: 1, ease: [0.22, 1, 0.36, 1] },
+  },
+  exit: {
+    opacity: 0,
+    y: -40,
+    filter: "blur(12px)",
+    transition: { duration: 0.6 },
+  },
+};
+
 /* ================= HOME PAGE ================= */
 export default function Home() {
   return (
-    <div className="bg-slate-950 text-white overflow-x-hidden font-sans selection:bg-cyan-500/30">
+    <motion.div
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      className="overflow-x-hidden"
+    >
 
       <section className="relative px-4 overflow-hidden md:min-h-[calc(100svh-56px)]">
         <div className="absolute inset-0 pointer-events-none bg-[url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2070')] bg-cover bg-center opacity-10" />
@@ -100,31 +206,53 @@ export default function Home() {
       
 
 {/* ================= EVENT TIMELINE ================= */}
-<section className="py-10 bg-gradient-to-b from-slate-950 to-slate-900 px-6">
+<Reveal>
+<section className="py-10 bg-gradient-to-b from-slate-950 to-slate-900 px-4 sm:px-6">
   <div className="max-w-7xl mx-auto">
-    <h2 className="text-3xl md:text-4xl font-black uppercase mb-14 text-center">
+    
+    <motion.h2
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+      className="text-3xl md:text-4xl font-black uppercase mb-14 text-center"
+    >
       Event <span className="text-cyan-500">Timeline</span>
-    </h2>
+    </motion.h2>
 
     {/* Timeline Wrapper */}
     <div className="relative overflow-x-auto pb-10">
-      <div className="min-w-[2200px] md:min-w-[2200px] relative">
+      <div className="min-w-[2200px] relative">
 
         {/* TIMELINE LINE */}
-        <div
+        <motion.div
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
           className="
-            absolute top-1/2
-            left-[65px] right-[65px]
-            h-[1px] bg-slate-700
+            absolute top-1/2 left-[65px] right-[65px]
+            h-[1px] bg-slate-700 origin-left
           "
         />
 
         {/* Timeline Items */}
-        <div className="flex justify-between items-center relative gap-8 md:gap-8">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: { staggerChildren: 0.08 }
+            }
+          }}
+          className="flex justify-between items-center relative gap-8"
+        >
           {[
             { date: "FEB 27", events: ["Integration Bee", "BOTC"] },
-            { date: "FEB 28", events: ["Code Combat", "Sudoku" ] },
-            { date: "MAR 05", events: ["Treasure Hunt","BGMI"] },
+            { date: "FEB 28", events: ["Code Combat", "Sudoku"] },
+            { date: "MAR 05", events: ["Treasure Hunt", "BGMI"] },
             { date: "MAR 06", events: ["Badminton"] },
             { date: "MAR 07", events: ["Football"] },
             { date: "MAR 08", events: ["Cricket"] },
@@ -136,268 +264,417 @@ export default function Home() {
             { date: "MAR 14", events: ["Internal Event"] },
             { date: "MAR 15", events: ["External Event"] },
           ].map((item, index) => (
-            <button
+            
+            <motion.button
               key={index}
               type="button"
+              variants={{
+                hidden: { opacity: 0, y: 50 },
+                visible: { opacity: 1, y: 0 }
+              }}
+              whileHover={{
+                y: -12,
+                scale: 1.06
+              }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 200, damping: 15 }}
               className="
                 relative flex flex-col items-center text-center
-                min-w-[130px]
-                cursor-pointer group focus:outline-none
+                min-w-[130px] cursor-pointer group focus:outline-none
               "
             >
               {/* EVENTS */}
-              <div
-                className="
-                  mb-6 space-y-1 transition-all duration-300
-                  group-hover:scale-105
-                  group-focus-within:scale-105
-                "
-              >
+              <div className="mb-6 space-y-1">
                 {item.events.map((ev, i) => (
-                  <p
+                  <motion.p
                     key={i}
+                    whileHover={{ scale: 1.05 }}
                     className="
                       text-xs font-semibold uppercase tracking-wide whitespace-nowrap
-                      text-slate-300
-                      group-hover:text-cyan-400
-                      group-focus-within:text-cyan-400
-                      transition-all duration-300
+                      text-slate-300 group-hover:text-cyan-400 transition
                     "
                   >
                     {ev}
-                  </p>
+                  </motion.p>
                 ))}
               </div>
 
               {/* DOT */}
-              <div
+              <motion.div
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                transition={{ delay: index * 0.05, type: "spring" }}
+                whileHover={{
+                  scale: 1.5,
+                  boxShadow: "0 0 30px rgba(6,182,212,1)"
+                }}
                 className="
                   absolute top-1/2 -translate-y-1/2
                   w-4 h-4 rounded-full bg-cyan-500 z-10
                   shadow-[0_0_15px_rgba(6,182,212,0.6)]
-                  transition-all duration-300
-                  group-hover:w-6 group-hover:h-6
-                  group-hover:shadow-[0_0_30px_rgba(6,182,212,1)]
-                  group-hover:animate-pulse
-                  group-focus-within:w-6 group-focus-within:h-6
-                  group-focus-within:shadow-[0_0_30px_rgba(6,182,212,1)]
-                  group-focus-within:animate-pulse
                 "
               />
 
               {/* DATE */}
-              <p
+              <motion.p
+                whileHover={{ scale: 1.1 }}
                 className="
                   mt-6 text-xs uppercase tracking-widest text-slate-400
-                  transition-all duration-300
-                  group-hover:text-cyan-400
-                  group-hover:scale-110
-                  group-focus-within:text-cyan-400
-                  group-focus-within:scale-110
+                  group-hover:text-cyan-400 transition
                 "
               >
                 {item.date}
-              </p>
-            </button>
+              </motion.p>
+            </motion.button>
           ))}
-        </div>
+        </motion.div>
       </div>
     </div>
   </div>
 </section>
+</Reveal>
+
+
 
 
 
       {/* ================= EXPLORE CTA ================= */}
-      <section className="py-10 text-center px-6">
-        <h2 className="text-4xl font-black mb-6">
-          Ready to <span className="text-cyan-500">Explore?</span>
-        </h2>
-        <p className="text-slate-400 mb-10 max-w-xl mx-auto">
-          Dive into competitions, workshops, talks, and unforgettable experiences.
-        </p>
-        <Link
-          to="/events"
-          className="inline-block bg-cyan-600 px-10 py-4 rounded-full font-bold hover:bg-cyan-500 transition shadow-lg"
-        >
-          Explore All Events
-        </Link>
-      </section>
+<Reveal>
+<section className="py-10 sm:py-14 text-center px-4 sm:px-6">
+  
+  {/* Heading */}
+  <motion.h2
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+    className="text-3xl sm:text-4xl md:text-5xl font-black mb-6"
+  >
+    Ready to{" "}
+    <motion.span
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.15, duration: 0.6 }}
+      className="text-cyan-500 inline-block"
+    >
+      Explore?
+    </motion.span>
+  </motion.h2>
 
-{/* ================= SPONSORS SCROLL ================= */}
-<section className="py-10 bg-slate-900/50 overflow-hidden">
-  <h3 className="text-xl uppercase tracking-widest text-slate-400 text-center mb-6">
-    Previous Sponsors
-  </h3>
+  {/* Subtitle */}
+  <motion.p
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ delay: 0.25, duration: 0.7 }}
+    className="text-slate-400 mb-10 max-w-xl mx-auto text-sm sm:text-base"
+  >
+    Dive into competitions, workshops, talks, and unforgettable experiences.
+  </motion.p>
 
+  {/* CTA Button */}
+  <motion.div
+    initial={{ opacity: 0, scale: 0.85 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    viewport={{ once: true }}
+    transition={{ delay: 0.4, type: "spring", stiffness: 180 }}
+    className="inline-block"
+  >
+    <Magnetic>
+      <Link
+        to="/events"
+        className="
+          inline-block bg-cyan-600 px-8 sm:px-10 py-3 sm:py-4
+          rounded-full font-bold shadow-lg
+          hover:bg-cyan-500 transition
+        "
+      >
+        Explore All Events
+      </Link>
+    </Magnetic>
+  </motion.div>
+
+</section>
+</Reveal>
+
+{/* ================= SPONSORS ================= */}
+<section className="py-16 sm:py-20 bg-slate-900/50 overflow-hidden">
+
+  {/* Heading */}
+  <Reveal>
+    <h3 className="text-xl uppercase tracking-widest text-slate-400 text-center mb-12">
+      Previous Sponsors
+    </h3>
+  </Reveal>
+
+  {/* Scroll Wrapper */}
   <div className="relative w-full overflow-hidden">
-    <div className="flex w-max animate-scroll gap-14 items-center">
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={{
+        hidden: {},
+        visible: {
+          transition: { staggerChildren: 0.06 }
+        }
+      }}
+      className="flex gap-14 sm:gap-16 w-max px-6 sm:px-10 animate-scroll"
+    >
       {[
-        "/src/assets/Sponsors/919fm.png",
-        "/src/assets/Sponsors/amd.png",
-        "/src/assets/Sponsors/apollo.png",
-        "/src/assets/Sponsors/Calcutta_times.png",
-        "/src/assets/Sponsors/Eilm.png",
-        "/src/assets/Sponsors/mdcomputers.png",
-        
-        "/src/assets/Sponsors/nimbus.png",
-        
-        "/src/assets/Sponsors/Redfm.png",
-        "/src/assets/Sponsors/Rene.png",
-        "/src/assets/Sponsors/RiceEdu.png",
-        "/src/assets/Sponsors/Sangbad_Pratidin.png",
-        "/src/assets/Sponsors/SUSE.png",
-        "/src/assets/Sponsors/The_Telegraph.png",
-        "/src/assets/Sponsors/ZenMobile.png",
+        "919fm","amd","apollo","Calcutta_times","Eilm","mdcomputers",
+        "nimbus","Redfm","Rene","RiceEdu","Sangbad_Pratidin",
+        "SUSE","The_Telegraph","ZenMobile",
 
         /* duplicate for seamless loop */
-        "/src/assets/Sponsors/919fm.png",
-        "/src/assets/Sponsors/amd.png",
-        "/src/assets/Sponsors/apollo.png",
-        "/src/assets/Sponsors/Calcutta_times.png",
-        "/src/assets/Sponsors/Eilm.png",
-        "/src/assets/Sponsors/mdcomputers.png",
-        
-        "/src/assets/Sponsors/nimbus.png",
-        
-        "/src/assets/Sponsors/Redfm.png",
-        "/src/assets/Sponsors/Rene.png",
-        "/src/assets/Sponsors/RiceEdu.png",
-        "/src/assets/Sponsors/Sangbad_Pratidin.png",
-        "/src/assets/Sponsors/SUSE.png",
-        "/src/assets/Sponsors/The_Telegraph.png",
-        "/src/assets/Sponsors/ZenMobile.png",
-      ].map((img, index) => (
-        <img
-          key={index}
-          src={img}
-          alt="Sponsor"
+        "919fm","amd","apollo","Calcutta_times","Eilm","mdcomputers",
+        "nimbus","Redfm","Rene","RiceEdu","Sangbad_Pratidin",
+        "SUSE","The_Telegraph","ZenMobile"
+      ].map((s, i) => (
+        <motion.img
+          key={i}
+          src={`/src/assets/Sponsors/${s}.png`}
+          alt={s}
+          loading="lazy"
+          variants={{
+            hidden: { opacity: 0, scale: 0.92 },
+            visible: {
+              opacity: 0.85,
+              scale: 1,
+              transition: {
+                duration: 0.6,
+                ease: [0.22, 1, 0.36, 1],
+              },
+            },
+          }}
+          whileHover={{
+            opacity: 1,
+            scale: 1.08,
+          }}
+          whileTap={{ scale: 0.95 }}
           className="
             h-12 sm:h-14 md:h-16
             w-auto object-contain
-            opacity-90
-            hover:opacity-100
             transition
+            cursor-default
           "
-          loading="lazy"
         />
       ))}
-    </div>
+    </motion.div>
   </div>
 </section>
-
 
 
 
 
 {/* ================= ABOUT THE DEPARTMENT ================= */}
+<section className="py-20 sm:py-24 px-4 sm:px-6 relative bg-slate-950 overflow-hidden">
 
-<section className="py-24 px-6 relative bg-slate-950 overflow-hidden">
-  {/* Background Accents */}
-  <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/5 blur-[120px] rounded-full pointer-events-none" />
-  <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-600/5 blur-[120px] rounded-full pointer-events-none" />
+  {/* Ambient Background */}
+  <div className="absolute top-0 left-1/4 w-72 sm:w-96 h-72 sm:h-96 bg-cyan-500/5 blur-[120px] rounded-full pointer-events-none" />
+  <div className="absolute bottom-0 right-1/4 w-72 sm:w-96 h-72 sm:h-96 bg-blue-600/5 blur-[120px] rounded-full pointer-events-none" />
 
-  <div className="max-w-7xl mx-auto space-y-32">
-    
-    {/* 1. DEPARTMENT SECTION (Text Left, Cards Right) */}
-    <div className="grid lg:grid-cols-2 gap-16 items-center">
-      <div className="space-y-6 order-1 lg:order-1">
-        <h2 className="text-4xl md:text-5xl font-black uppercase leading-tight">
+  <div className="max-w-7xl mx-auto space-y-24 sm:space-y-32">
+
+    {/* ================= SECTION 1 ================= */}
+    <div className="grid lg:grid-cols-2 gap-12 sm:gap-16 items-center">
+
+      {/* TEXT – MOUSE TRACING */}
+      <MouseTrace className="space-y-6">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase leading-tight">
           Legacy of <br />
           <span className="text-cyan-500">Excellence</span>
         </h2>
-        <div className="space-y-4 text-slate-300 leading-relaxed text-sm md:text-base">
-          <p>
-            Established in <span className="text-white font-bold">1980</span>, the Department of Computer Science and Engineering at the University of Calcutta is a cornerstone of Indian technological research. Originally founded at Rajabazar Science College, it has played a vital role in shaping the nation's scientific landscape for over four decades.
-          </p>
-          <p>
-            The department is recognized for its elite academic standards, enjoying multiple phases of 
-            <span className="text-cyan-400 font-semibold"> UGC-SAP (DRS/DSA)</span> and <span className="text-cyan-400 font-semibold">DST-FIST</span> support.
-          </p>
-         
-        </div>
-      </div>
 
-      <div className="grid grid-cols-2 gap-4 order-2 lg:order-2">
+        <div className="space-y-4 text-slate-300 leading-relaxed text-sm sm:text-base">
+          <p>
+            Established in <span className="text-white font-bold">1980</span>,
+            the Department of Computer Science and Engineering at the University
+            of Calcutta stands as a cornerstone of Indian technological
+            research. From its origins at Rajabazar Science College, the
+            department has shaped generations of engineers and researchers.
+          </p>
+
+          <p>
+            Recognized nationally for its academic rigor, the department has
+            enjoyed multiple phases of{" "}
+            <span className="text-cyan-400 font-semibold">
+              UGC-SAP (DRS/DSA)
+            </span>{" "}
+            and{" "}
+            <span className="text-cyan-400 font-semibold">
+              DST-FIST
+            </span>{" "}
+            support, reinforcing its legacy of excellence.
+          </p>
+        </div>
+      </MouseTrace>
+
+      {/* STATS */}
+      <div className="grid grid-cols-2 gap-4">
         {[
           { label: "Founded", val: "1980" },
           { label: "UGC Recognition", val: "DSA-II" },
           { label: "Legacy", val: "40+ Yrs" },
           { label: "Tech Campus", val: "Salt Lake" }
         ].map((stat) => (
-          <div key={stat.label} className="p-6 bg-slate-900/40 border border-slate-800 rounded-2xl flex flex-col justify-center items-center text-center hover:border-cyan-500/50 transition">
-            <span className="text-2xl md:text-3xl font-black text-white">{stat.val}</span>
-            <span className="text-[10px] uppercase tracking-tighter text-slate-500 mt-1">{stat.label}</span>
-          </div>
+          <motion.div
+            key={stat.label}
+            initial={{ opacity: 0, scale: 0.92 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            whileHover={{ y: -6 }}
+            className="
+              p-6 bg-slate-900/40 border border-slate-800
+              rounded-2xl flex flex-col items-center text-center
+              hover:border-cyan-500/40 transition
+            "
+          >
+            <span className="text-2xl sm:text-3xl font-black text-white">
+              {stat.val}
+            </span>
+            <span className="text-[10px] uppercase tracking-tighter text-slate-500 mt-1">
+              {stat.label}
+            </span>
+          </motion.div>
         ))}
       </div>
     </div>
 
-    {/* 2. REFLEXONS SECTION (Cards Left, Text Right) */}
-    <div className="grid lg:grid-cols-2 gap-16 items-center">
-      {/* Feature List */}
-      <div className="space-y-4 order-2">
+    {/* ================= SECTION 2 ================= */}
+    <div className="grid lg:grid-cols-2 gap-12 sm:gap-16 items-center">
+
+      {/* FEATURE LIST */}
+      <div className="space-y-4 order-2 lg:order-1">
         {[
           { id: "01", title: "Tech Arena", desc: "Hackathons, Robotics, and Dev-talks." },
           { id: "02", title: "Grand Reunion", desc: "Connecting 40+ years of tech leaders." },
           { id: "03", title: "Cultural Pulse", desc: "Nights of music, drama, and memories." }
         ].map((item) => (
-          <div key={item.id} className="group p-5 bg-slate-900/40 border border-slate-800 rounded-2xl hover:bg-slate-900/60 transition-all">
+          <motion.div
+            key={item.id}
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            whileHover={{ x: 6 }}
+            className="
+              p-5 bg-slate-900/40 border border-slate-800
+              rounded-2xl hover:bg-slate-900/60 transition
+            "
+          >
             <div className="flex items-center gap-5">
-              <div className="text-2xl font-black text-cyan-500/20 group-hover:text-cyan-500 transition-colors">{item.id}</div>
+              <div className="text-2xl font-black text-cyan-500/20">
+                {item.id}
+              </div>
               <div>
-                <h4 className="text-white font-bold uppercase tracking-widest text-sm">{item.title}</h4>
-                <p className="text-xs text-slate-500 mt-0.5">{item.desc}</p>
+                <h4 className="text-white font-bold uppercase tracking-widest text-sm">
+                  {item.title}
+                </h4>
+                <p className="text-xs text-slate-500 mt-0.5">
+                  {item.desc}
+                </p>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
 
-      {/* Description */}
-      <div className="space-y-6 order-1">
-        <h2 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter text-white">
-          The <span className="text-cyan-500">Reflexons</span> <br />Experience
+      {/* EXPERIENCE TEXT – MOUSE TRACING */}
+      <MouseTrace className="space-y-6 order-1 lg:order-2">
+        <h2 className="text-3xl sm:text-4xl md:text-6xl font-black italic uppercase tracking-tighter text-white">
+          The <span className="text-cyan-500">Reflexons</span> <br />
+          Experience
         </h2>
-        <div className="space-y-4 text-slate-300 text-sm md:text-base leading-relaxed">
+
+        <div className="space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed">
           <p>
-            Born in <span className="text-white font-semibold">1985</span>, Reflexons is the signature Annual Tech Fest and Reunion of CUCSE. It is where the silence of the labs is replaced by the roar of competition.
+            Born in <span className="text-white font-semibold">1985</span>,
+            Reflexons is the signature Annual Tech Fest and Reunion of CUCSE,
+            where innovation meets tradition.
           </p>
           <p>
-            From the intense logic of <span className="text-cyan-400">Coding Combat</span> to the strategic battlegrounds of <span className="text-cyan-400">Robotics</span>, it is a homecoming that bridges generations of engineers under one roof.
+            From <span className="text-cyan-400">Coding Combat</span> to
+            <span className="text-cyan-400"> Robotics</span>, it unites students,
+            alumni, and industry under one shared experience.
           </p>
         </div>
-      </div>
-    </div>
+      </MouseTrace>
 
+    </div>
   </div>
 </section>
 
+
 {/* ================= COMMITTEE SECTION ================= */}
-<section className="py-20 bg-slate-950 px-6">
-  <div className="max-w-7xl mx-auto">
-    <h2 className="text-3xl md:text-5xl font-black uppercase mb-16 text-center italic tracking-tighter">
+<section className="py-20 sm:py-24 bg-slate-950 px-4 sm:px-6 relative overflow-hidden">
+
+  {/* Ambient glow */}
+  <div className="absolute left-1/2 top-0 -translate-x-1/2 w-96 h-96 bg-cyan-500/5 blur-[140px] rounded-full pointer-events-none" />
+
+  <div className="max-w-7xl mx-auto relative z-10">
+
+    {/* Title */}
+    <motion.h2
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+      className="text-3xl sm:text-4xl md:text-5xl font-black uppercase mb-16 text-center italic tracking-tighter"
+    >
       The <span className="text-cyan-500">Committee</span>
-    </h2>
-    
-    {/* Executive Tier */}
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 max-w-4xl mx-auto">
+    </motion.h2>
+
+    {/* ================= EXECUTIVE TIER ================= */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-20 max-w-4xl mx-auto">
+
       {[
         { name: "Richik Mallick", role: "General Secretary" },
         { name: "Subhashish Mukherjee & Arkopravo Saha", role: "Asst. General Secretary" }
       ].map((member, idx) => (
-        <div key={idx} className="text-center p-8 bg-slate-900/40 border border-slate-800 rounded-3xl hover:border-cyan-500/50 transition-all group">
-          <h3 className="text-xl font-bold uppercase tracking-widest text-white group-hover:text-cyan-400 transition-colors">{member.name}</h3>
-          <p className="text-xs text-slate-500 uppercase tracking-[0.3em] mt-2">{member.role}</p>
-        </div>
+        <motion.div
+          key={idx}
+          initial={{ opacity: 0, scale: 0.92 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: idx * 0.1 }}
+          whileHover={{ y: -8 }}
+          className="
+            relative text-center p-8
+            bg-slate-900/40 border border-slate-800
+            rounded-3xl transition
+            hover:border-cyan-500/40
+          "
+        >
+          {/* Mouse / Touch trace on name */}
+          <MouseTrace>
+            <h3 className="text-lg sm:text-xl font-bold uppercase tracking-widest text-white">
+              {member.name}
+            </h3>
+          </MouseTrace>
+
+          <p className="text-xs text-slate-500 uppercase tracking-[0.3em] mt-3">
+            {member.role}
+          </p>
+        </motion.div>
       ))}
     </div>
 
-    {/* Working Committee Tier */}
-    <h3 className="text-center text-slate-400 uppercase tracking-[0.4em] text-sm mb-10 font-bold">Secretaries & Leads</h3>
-    <div className="flex flex-wrap justify-center gap-6">
+    {/* ================= WORKING COMMITTEE ================= */}
+    <motion.h3
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="text-center text-slate-400 uppercase tracking-[0.4em] text-xs sm:text-sm mb-10 font-bold"
+    >
+      Secretaries & Leads
+    </motion.h3>
+
+    <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
+
       {[
-        
         { name: "Soumili Saha", role: "Treasurer" },
         { name: "Debasmita Sen & Tirtharoop Banerjee", role: "Asst. Treasurer" },
         { name: "Shaswata Mukherjee", role: "Indoor Games Secretary" },
@@ -405,28 +682,59 @@ export default function Home() {
         { name: "Chayan Maity & Subhra Pratim Mondal", role: "Cultural Secretary" },
         { name: "Debmalya Ghosh", role: "Graphics Designer" }
       ].map((member, idx) => (
-        <div key={idx} className="px-6 py-5 bg-slate-900/30 border border-white/5 rounded-xl text-center min-w-[240px] hover:bg-slate-900/60 transition group">
-          <p className="text-sm font-bold uppercase text-slate-200 group-hover:text-white transition-colors">
-            {member.name}
-          </p>
+        <motion.div
+          key={idx}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: idx * 0.06 }}
+          whileHover={{ y: -6 }}
+          className="
+            px-6 py-5 min-w-[220px]
+            bg-slate-900/30 border border-white/5
+            rounded-xl text-center transition
+            hover:bg-slate-900/60
+          "
+        >
+          <MouseTrace>
+            <p className="text-sm font-bold uppercase text-slate-200">
+              {member.name}
+            </p>
+          </MouseTrace>
+
           <p className="text-[10px] uppercase tracking-wider text-cyan-600 font-semibold mt-1">
             {member.role}
           </p>
-        </div>
+        </motion.div>
       ))}
+
     </div>
   </div>
 </section>
 
-      {/* ================= GALLERY ================= */}
-<section className="py-10 px-6 bg-slate-950">
+  {/* ================= GALLERY ================= */}
+<section className="py-16 px-6 bg-slate-950">
   <div className="max-w-7xl mx-auto">
-    
-    <h2 className="text-3xl md:text-4xl font-black uppercase mb-16 text-center">
-      Fest <span className="text-cyan-500">Gallery</span>
-    </h2>
 
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6">
+    {/* Title */}
+    <motion.h2
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="text-3xl md:text-4xl font-black uppercase mb-14 text-center"
+    >
+      Fest <span className="text-cyan-500">Gallery</span>
+    </motion.h2>
+
+    {/* Grid */}
+    <motion.div
+      variants={galleryContainer}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true }}
+      className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6"
+    >
       {[
         "https://i.ibb.co/GvcFWWvM/482588403-17895851718159722-4924959788168103349-n.jpg",
         "https://i.ibb.co/cMTx0Lf/DSC-9030.jpg",
@@ -439,88 +747,144 @@ export default function Home() {
         "https://i.ibb.co/n8gNLyRD/DSC-8302.jpg",
         "https://i.ibb.co/MkZDYg44/DSC-8164.jpg",
         "https://i.ibb.co/q30sV2JJ/DSC-8038.jpg",
-        "https://i.ibb.co/G3C93yv0/DSC-7932.jpg"
+        "https://i.ibb.co/G3C93yv0/DSC-7932.jpg",
       ].map((img, index) => (
-        <div
+        <motion.div
           key={index}
+          variants={galleryItem}
+          whileHover={{ y: -8 }}
+          whileTap={{ scale: 0.97 }}
           className="group relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/40"
         >
           <img
             src={`${img}?q=80&w=800`}
             alt="Reflexons Gallery"
-            className="w-full h-full object-cover aspect-square transition-transform duration-700 group-hover:scale-110"
+            loading="lazy"
+            className="w-full h-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105"
           />
 
           {/* Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition" />
+          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
           {/* Glow */}
-          <div className="absolute inset-0 ring-0 group-hover:ring-2 ring-cyan-500/40 rounded-2xl transition-all" />
-        </div>
+          <div className="absolute inset-0 ring-0 group-hover:ring-2 ring-cyan-500/40 rounded-2xl transition-all duration-300" />
+        </motion.div>
       ))}
-    </div>
+    </motion.div>
   </div>
 </section>
-  
-  {/* ================= CONTACT US (MODIFIED) ================= */}
-      <section className="py-24 px-6 bg-slate-950 relative">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12">
-          {/* Contact Details */}
-          <div className="space-y-8">
-            <h2 className="text-4xl font-black uppercase italic">Contact <span className="text-cyan-500">Us</span></h2>
-            
-            <div className="grid gap-6">
-              <div className="p-6 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl">
-                <p className="text-cyan-500 text-xs font-bold uppercase tracking-widest mb-4">Event Inquiries</p>
-                <div className="flex justify-between items-center mb-4">
-                  <div>
-                    <p className="font-bold">Shaswata Mukherjee</p>
-                    <p className="text-slate-400 text-sm">+91 93301 29904</p>
-                  </div>
-                  <div className="p-3 bg-cyan-500/10 rounded-full text-cyan-500">📞</div>
-                </div>
-                <div className="flex justify-between items-center">
-                  <div>
-                    <p className="font-bold">Soumili Saha</p>
-                    <p className="text-slate-400 text-sm">+91 94331 69204</p>
-                  </div>
-                  <div className="p-3 bg-cyan-500/10 rounded-full text-cyan-500">📞</div>
-                </div>
-              </div>
 
-              <div className="p-6 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl">
-                <p className="text-cyan-500 text-xs font-bold uppercase tracking-widest mb-4">PR Inquiries</p>
-                <div className="flex justify-between items-center mb-4">
-                  <div>
-                    <p className="font-bold">Debmalya Ghosh</p>
-                    <p className="text-slate-400 text-sm">+91 99037 83336</p>
-                  </div>
-                  <div className="p-3 bg-cyan-500/10 rounded-full text-cyan-500">📞</div>
-                </div>
-              </div>
+
+
+  {/* ================= CONTACT US ================= */}
+<section className="py-24 px-6 bg-slate-950 relative">
+  <motion.div
+    variants={contactContainer}
+    initial="hidden"
+    whileInView="show"
+    viewport={{ once: true }}
+    className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12"
+  >
+
+    {/* LEFT : CONTACT DETAILS */}
+    <motion.div variants={contactItem} className="space-y-8">
+      <motion.h2
+        variants={contactItem}
+        className="text-4xl font-black uppercase italic"
+      >
+        Contact <span className="text-cyan-500">Us</span>
+      </motion.h2>
+
+      <div className="grid gap-6">
+        {/* Event Inquiries */}
+        <motion.div
+          variants={contactItem}
+          whileHover={{ y: -4 }}
+          className="p-6 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl transition"
+        >
+          <p className="text-cyan-500 text-xs font-bold uppercase tracking-widest mb-4">
+            Event Inquiries
+          </p>
+
+          <div className="flex justify-between items-center mb-4">
+            <div>
+              <p className="font-bold">Shaswata Mukherjee</p>
+              <p className="text-slate-400 text-sm">+91 93301 29904</p>
+            </div>
+            <div className="p-3 bg-cyan-500/10 rounded-full text-cyan-500">
+              📞
             </div>
           </div>
 
-          {/* Address Card */}
-          <div className="p-8 bg-cyan-900/20 backdrop-blur-xl border border-cyan-500/20 rounded-3xl flex flex-col justify-center">
-            <h3 className="text-2xl font-black uppercase mb-6 tracking-tighter">Address</h3>
-            <div className="space-y-4 text-slate-300">
-              <p>JD-2, Sector 3,</p>
-              <p>Salt Lake City, Calcutta University (Technology Campus),</p>
-              <p className="font-bold text-white">Kolkata - 700098, West Bengal, India</p>
+          <div className="flex justify-between items-center">
+            <div>
+              <p className="font-bold">Soumili Saha</p>
+              <p className="text-slate-400 text-sm">+91 94331 69204</p>
             </div>
-            
-            <div className="mt-10 pt-10 border-t border-white/10">
-              <p className="text-xs uppercase text-slate-500 tracking-widest mb-2">General Secretary</p>
-              <p className="text-xl font-bold">Richik Mallick</p>
-              <p className="text-cyan-400">+91 89067 43263</p>
-              <p className="text-slate-400 text-sm">reflexonscucse.tech@gmail.com</p>
+            <div className="p-3 bg-cyan-500/10 rounded-full text-cyan-500">
+              📞
             </div>
           </div>
-        </div>
-      </section>
+        </motion.div>
 
-    </div>
+        {/* PR Inquiries */}
+        <motion.div
+          variants={contactItem}
+          whileHover={{ y: -4 }}
+          className="p-6 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl transition"
+        >
+          <p className="text-cyan-500 text-xs font-bold uppercase tracking-widest mb-4">
+            PR Inquiries
+          </p>
+
+          <div className="flex justify-between items-center">
+            <div>
+              <p className="font-bold">Debmalya Ghosh</p>
+              <p className="text-slate-400 text-sm">+91 99037 83336</p>
+            </div>
+            <div className="p-3 bg-cyan-500/10 rounded-full text-cyan-500">
+              📞
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </motion.div>
+
+    {/* RIGHT : ADDRESS */}
+    <motion.div
+      variants={contactItem}
+      whileHover={{ y: -4 }}
+      className="p-8 bg-cyan-900/20 backdrop-blur-xl border border-cyan-500/20 rounded-3xl flex flex-col justify-center transition"
+    >
+      <h3 className="text-2xl font-black uppercase mb-6 tracking-tighter">
+        Address
+      </h3>
+
+      <div className="space-y-4 text-slate-300">
+        <p>JD-2, Sector 3,</p>
+        <p>Salt Lake City, Calcutta University (Technology Campus),</p>
+        <p className="font-bold text-white">
+          Kolkata - 700098, West Bengal, India
+        </p>
+      </div>
+
+      <div className="mt-10 pt-10 border-t border-white/10">
+        <p className="text-xs uppercase text-slate-500 tracking-widest mb-2">
+          General Secretary
+        </p>
+        <p className="text-xl font-bold">Richik Mallick</p>
+        <p className="text-cyan-400">+91 89067 43263</p>
+        <p className="text-slate-400 text-sm">
+          reflexonscucse.tech@gmail.com
+        </p>
+      </div>
+    </motion.div>
+
+  </motion.div>
+</section>
+
+
+    </motion.div>
     
   );
   <Footer />
