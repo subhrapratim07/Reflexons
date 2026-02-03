@@ -663,53 +663,69 @@ export default function Home() {
     </div>
 
     {/* ================= WORKING COMMITTEE ================= */}
-    <motion.h3
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
+<motion.h3
+  initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.6 }}
+  className="text-center text-slate-400 uppercase tracking-[0.4em] text-xs sm:text-sm mb-12 font-bold"
+>
+  Secretaries & Leads
+</motion.h3>
+
+<div
+  className="
+    grid 
+    grid-cols-1 
+    sm:grid-cols-2 
+    lg:grid-cols-3 
+    gap-6
+    max-w-5xl
+    mx-auto
+  "
+>
+  {[
+    { name: "Soumili Saha", role: "Treasurer" },
+    { name: "Debasmita Sen & Tirtharoop Banerjee", role: "Asst. Treasurer" },
+    { name: "Shaswata Mukherjee", role: "Indoor Games Secretary" },
+    { name: "Mafyul Islam", role: "Outdoor Games Secretary" },
+    { name: "Chayan Maity & Subhra Pratim Mondal", role: "Cultural Secretary" },
+    { name: "Debmalya Ghosh", role: "Graphics Designer" }
+  ].map((member, idx) => (
+    <motion.div
+      key={idx}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
-      className="text-center text-slate-400 uppercase tracking-[0.4em] text-xs sm:text-sm mb-10 font-bold"
+      transition={{ duration: 0.45, delay: idx * 0.07 }}
+      whileHover={{ y: -10 }}
+      className="
+        p-7
+        h-[130px]
+        flex flex-col justify-center
+        bg-slate-900/40
+        border border-slate-800
+        rounded-2xl
+        text-center
+        backdrop-blur-md
+        transition-all duration-300
+        hover:border-cyan-500/50
+        hover:shadow-[0_0_25px_rgba(6,182,212,0.15)]
+      "
     >
-      Secretaries & Leads
-    </motion.h3>
+      <MouseTrace>
+        <p className="text-base font-semibold uppercase tracking-wide text-white">
+          {member.name}
+        </p>
+      </MouseTrace>
 
-    <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
+      <p className="text-[11px] uppercase tracking-[0.25em] text-cyan-500 font-semibold mt-2">
+        {member.role}
+      </p>
+    </motion.div>
+  ))}
+</div>
 
-      {[
-        { name: "Soumili Saha", role: "Treasurer" },
-        { name: "Debasmita Sen & Tirtharoop Banerjee", role: "Asst. Treasurer" },
-        { name: "Shaswata Mukherjee", role: "Indoor Games Secretary" },
-        { name: "Mafyul Islam", role: "Outdoor Games Secretary" },
-        { name: "Chayan Maity & Subhra Pratim Mondal", role: "Cultural Secretary" },
-        { name: "Debmalya Ghosh", role: "Graphics Designer" }
-      ].map((member, idx) => (
-        <motion.div
-          key={idx}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: idx * 0.06 }}
-          whileHover={{ y: -6 }}
-          className="
-            px-6 py-5 min-w-[220px]
-            bg-slate-900/30 border border-white/5
-            rounded-xl text-center transition
-            hover:bg-slate-900/60
-          "
-        >
-          <MouseTrace>
-            <p className="text-sm font-bold uppercase text-slate-200">
-              {member.name}
-            </p>
-          </MouseTrace>
-
-          <p className="text-[10px] uppercase tracking-wider text-cyan-600 font-semibold mt-1">
-            {member.role}
-          </p>
-        </motion.div>
-      ))}
-
-    </div>
   </div>
 </section>
 
