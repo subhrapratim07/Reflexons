@@ -2,20 +2,27 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer className="relative bg-slate-950 border-t border-slate-800 px-6 pt-12 pb-6 overflow-hidden">
+    <footer className="relative bg-[#020617] border-t border-slate-800 px-5 sm:px-8 lg:px-6 pt-14 pb-8 overflow-hidden">
 
       {/* Glow Accent */}
       <div className="absolute inset-x-0 -top-20 h-40 bg-cyan-500/10 blur-3xl pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 text-sm text-slate-400">
+      <div
+        className="
+        relative max-w-7xl mx-auto
+        grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4
+        gap-10 lg:gap-16
+        text-sm text-slate-400
+      "
+      >
 
         {/* ================= BRAND ================= */}
-        <div className="space-y-4">
+        <div className="space-y-4 text-center sm:text-left">
           <h3 className="text-white font-black tracking-widest uppercase text-lg">
             Reflexons<span className="text-cyan-500">'26</span>
           </h3>
 
-          <p className="leading-relaxed">
+          <p className="leading-relaxed max-w-xs mx-auto sm:mx-0">
             40th Annual Tech Fest & Reunion<br />
             Department of Computer Science & Engineering<br />
             University of Calcutta
@@ -27,37 +34,53 @@ export default function Footer() {
         </div>
 
         {/* ================= QUICK LINKS ================= */}
-        <div>
+        <div className="text-center sm:text-left">
           <h4 className="text-white uppercase tracking-widest mb-4">
             Explore
           </h4>
+
           <ul className="space-y-2">
-            <li><Link to="/" className="hover:text-cyan-400">Home</Link></li>
-            <li><Link to="/events" className="hover:text-cyan-400">Events</Link></li>
-            <li><Link to="/OfficialAttire" className="hover:text-cyan-400">Official Attire</Link></li>
+            <li>
+              <Link to="/" className="hover:text-cyan-400 transition">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link to="/events" className="hover:text-cyan-400 transition">
+                Events
+              </Link>
+            </li>
+            <li>
+              <Link to="/OfficialAttire" className="hover:text-cyan-400 transition">
+                Official Attire
+              </Link>
+            </li>
           </ul>
         </div>
 
         {/* ================= CONTACT ================= */}
-        <div>
+        <div className="text-center sm:text-left">
           <h4 className="text-white uppercase tracking-widest mb-4">
             Contact
           </h4>
+
           <p>📧 reflexonscucse.tech@gmail.com</p>
-          <p className="mt-2">
+
+          <p className="mt-2 max-w-xs mx-auto sm:mx-0">
             📍 Technology Campus,<br />
             University of Calcutta,<br />
             Salt Lake, Kolkata – 700098
           </p>
         </div>
 
-        {/* ================= SOCIAL (SVG ICONS) ================= */}
-        <div>
+        {/* ================= SOCIAL ================= */}
+        <div className="text-center sm:text-left">
           <h4 className="text-white uppercase tracking-widest mb-4">
             Follow Us
           </h4>
 
-          <div className="flex gap-4">
+          <div className="flex justify-center sm:justify-start gap-4">
+            
             {/* Instagram */}
             <a
               href="https://www.instagram.com/reflexons4u/"
@@ -82,13 +105,12 @@ export default function Footer() {
               </svg>
             </a>
 
-            
           </div>
         </div>
       </div>
 
       {/* Bottom */}
-      <div className="mt-10 pt-4 border-t border-slate-800 text-center text-xs text-slate-500">
+      <div className="mt-12 pt-6 border-t border-slate-800 text-center text-xs text-slate-500">
         © {new Date().getFullYear()} REFLEXONS • CSE • UNIVERSITY OF CALCUTTA
       </div>
 
@@ -96,8 +118,8 @@ export default function Footer() {
       <style>
         {`
           .social-btn {
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -106,10 +128,12 @@ export default function Footer() {
             color: #cbd5f5;
             transition: all 0.3s;
           }
+
           .social-btn:hover {
             border-color: #22d3ee;
             color: #22d3ee;
             box-shadow: 0 0 20px rgba(6,182,212,.35);
+            transform: translateY(-4px);
           }
         `}
       </style>

@@ -222,7 +222,7 @@ export default function Home() {
 
     {/* Timeline Wrapper */}
     <div className="relative overflow-x-auto pb-10">
-      <div className="min-w-[2200px] relative">
+      <div className="min-w-[2400px] relative">
 
         {/* TIMELINE LINE */}
         <motion.div
@@ -250,20 +250,22 @@ export default function Home() {
           className="flex justify-between items-center relative gap-8"
         >
           {[
-            { date: "FEB 27", events: ["Integration Bee", "BOTC"] },
-            { date: "FEB 28", events: ["Code Combat", "Sudoku"] },
-            { date: "MAR 05", events: ["Treasure Hunt", "BGMI"] },
-            { date: "MAR 06", events: ["Badminton"] },
-            { date: "MAR 07", events: ["Football"] },
-            { date: "MAR 08", events: ["Cricket"] },
-            { date: "MAR 09", events: ["Hackathon"] },
-            { date: "MAR 10", events: ["Debate", "Chess"] },
-            { date: "MAR 11", events: ["Quiz", "Free Fire"] },
-            { date: "MAR 12", events: ["Valorant", "EAFC"] },
-            { date: "MAR 13", events: ["Valorant", "Robo Race"] },
-            { date: "MAR 14", events: ["Internal Event"] },
-            { date: "MAR 15", events: ["External Event"] },
-          ].map((item, index) => (
+    { date: "FEB 27", events: ["Code Combat", "Sudoku"] },
+    { date: "FEB 28", events: ["Badminton"] },
+    { date: "MAR 01", events: ["Football", "Capture the Flag"] },
+    { date: "MAR 02", events: ["Blood on the Clocktower"] },
+    { date: "MAR 05", events: ["Debate", "BGMI"] },
+    { date: "MAR 06", events: ["Chess"] },
+    { date: "MAR 07", events: ["Hackathon"] },
+    { date: "MAR 08", events: ["Cricket", "eFootball (Online)"] },
+    { date: "MAR 09", events: ["Quiz", "eFootball (Offline)"] },
+    { date: "MAR 10", events: ["Free Fire"] },
+    { date: "MAR 11", events: ["Treasure Hunt"] },
+    { date: "MAR 12", events: ["Valorant", "eAFC"] },
+    { date: "MAR 13", events: ["Valorant"] },
+    { date: "MAR 14", events: ["Internal Event"] },
+    { date: "MAR 15", events: ["External Event"] }
+].map((item, index) => (
             
             <motion.button
               key={index}
@@ -338,61 +340,87 @@ export default function Home() {
 
 
 
-      {/* ================= EXPLORE CTA ================= */}
+ {/* ================= EXPLORE CTA ================= */}
 <Reveal>
-<section className="py-10 sm:py-14 text-center px-4 sm:px-6">
-  
-  {/* Heading */}
-  <motion.h2
-    initial={{ opacity: 0, y: 40 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-    className="text-3xl sm:text-4xl md:text-5xl font-black mb-6"
-  >
-    Ready to{" "}
-    <motion.span
-      initial={{ opacity: 0, y: 20 }}
+<section className="relative py-10 sm:py-14 text-center px-4 sm:px-6 overflow-hidden">
+
+  {/* ===== IMAGE BACKGROUND ONLY ===== */}
+  <div className="absolute inset-0 -z-10">
+
+    {/* Blurred Image */}
+    <img
+      src="https://i.ibb.co/HLFWfg2C/bk.png"
+      alt="background"
+      className="
+        absolute inset-0
+        w-full h-full
+        object-cover
+        blur-[10px]
+        scale-125
+        opacity-40
+      "
+    />
+
+    {/* Dark Overlay (for text visibility) */}
+    <div className="absolute inset-0 bg-[#020617]/75" />
+
+    {/* Optional Blue Tint */}
+    <div className="absolute inset-0 bg-cyan-900/20" />
+
+  </div>
+
+  {/* ================= CONTENT ================= */}
+  {/* Content */}
+  <div className="relative z-10">
+    <motion.h2
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.15, duration: 0.6 }}
-      className="text-cyan-500 inline-block"
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+      className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 text-white"
     >
-      Explore?
-    </motion.span>
-  </motion.h2>
-
-  {/* Subtitle */}
-  <motion.p
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ delay: 0.25, duration: 0.7 }}
-    className="text-slate-400 mb-10 max-w-xl mx-auto text-sm sm:text-base"
-  >
-    Dive into competitions, workshops, talks, and unforgettable experiences.
-  </motion.p>
-
-  {/* CTA Button */}
-  <motion.div
-    initial={{ opacity: 0, scale: 0.85 }}
-    whileInView={{ opacity: 1, scale: 1 }}
-    viewport={{ once: true }}
-    transition={{ delay: 0.4, type: "spring", stiffness: 180 }}
-    className="inline-block"
-  >
-    <Magnetic>
-      <Link
-        to="/events"
-        className="
-          inline-block bg-cyan-600 px-8 sm:px-10 py-3 sm:py-4
-          rounded-full font-bold shadow-lg
-          hover:bg-cyan-500 transition
-        "
+      Ready to{" "}
+      <motion.span
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.15, duration: 0.6 }}
+        className="text-cyan-400 inline-block drop-shadow-[0_0_15px_rgba(34,211,238,0.3)]"
       >
-        Explore All Events
-      </Link>
-    </Magnetic>
-  </motion.div>
+        Explore?
+      </motion.span>
+    </motion.h2>
+
+    <motion.p
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.25, duration: 0.7 }}
+      className="text-slate-200 mb-10 max-w-xl mx-auto text-sm sm:text-base font-medium"
+    >
+      Dive into competitions, workshops, talks, and unforgettable experiences.
+    </motion.p>
+
+    <motion.div
+      initial={{ opacity: 0, scale: 0.85 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.4, type: "spring", stiffness: 180 }}
+      className="inline-block"
+    >
+      <Magnetic>
+        <Link
+          to="/events"
+          className="
+            inline-block bg-cyan-600 px-8 sm:px-10 py-3 sm:py-4
+            rounded-full font-bold shadow-xl text-white
+            hover:bg-cyan-500 transition-all active:scale-95
+          "
+        >
+          Explore All Events
+        </Link>
+      </Magnetic>
+    </motion.div>
+  </div>
 
 </section>
 </Reveal>
@@ -471,11 +499,51 @@ export default function Home() {
 {/* ================= ABOUT THE DEPARTMENT ================= */}
 <section className="py-20 sm:py-24 px-4 sm:px-6 relative bg-slate-950 overflow-hidden">
 
-  {/* Ambient Background */}
+  {/* ===== IMAGE BACKGROUND — DEPARTMENT ===== */}
+  <img
+    src="https://i.ibb.co/cXVngG7c/compsc.jpg"
+    alt="Department"
+    className="
+      absolute top-0 left-0 w-full h-[55%]
+      object-cover
+      opacity-[0.08]
+      blur-[2px]
+      pointer-events-none
+      select-none
+    "
+  />
+
+  {/* Blue Overlay */}
+  <div className="absolute top-0 left-0 w-full h-[55%] bg-gradient-to-b from-blue-600/20 via-cyan-500/10 to-transparent pointer-events-none" />
+
+
+
+  {/* ===== IMAGE BACKGROUND — REFLEXONS ===== */}
+  <img
+    src="https://i.ibb.co/Ndp4xhKN/refelxons25.png"
+    alt="Reflexons"
+    className="
+      absolute bottom-0 right-0 w-full h-[55%]
+      object-cover
+      opacity-[0.08]
+      blur-[2px]
+      pointer-events-none
+      select-none
+    "
+  />
+
+  {/* Blue Overlay */}
+  <div className="absolute bottom-0 right-0 w-full h-[55%] bg-gradient-to-t from-blue-600/20 via-cyan-500/10 to-transparent pointer-events-none" />
+
+
+
+  {/* Ambient Glow */}
   <div className="absolute top-0 left-1/4 w-72 sm:w-96 h-72 sm:h-96 bg-cyan-500/5 blur-[120px] rounded-full pointer-events-none" />
   <div className="absolute bottom-0 right-1/4 w-72 sm:w-96 h-72 sm:h-96 bg-blue-600/5 blur-[120px] rounded-full pointer-events-none" />
 
-  <div className="max-w-7xl mx-auto space-y-24 sm:space-y-32">
+
+
+  <div className="relative max-w-7xl mx-auto space-y-24 sm:space-y-32">
 
     {/* ================= SECTION 1 ================= */}
     <div className="grid lg:grid-cols-2 gap-12 sm:gap-16 items-center">
@@ -492,8 +560,7 @@ export default function Home() {
             Established in <span className="text-white font-bold">1980</span>,
             the Department of Computer Science and Engineering at the University
             of Calcutta stands as a cornerstone of Indian technological
-            research. From its origins at Rajabazar Science College, the
-            department has shaped generations of engineers and researchers.
+            research.
           </p>
 
           <p>
@@ -505,8 +572,7 @@ export default function Home() {
             and{" "}
             <span className="text-cyan-400 font-semibold">
               DST-FIST
-            </span>{" "}
-            support, reinforcing its legacy of excellence.
+            </span>.
           </p>
         </div>
       </MouseTrace>
@@ -530,6 +596,7 @@ export default function Home() {
               p-6 bg-slate-900/40 border border-slate-800
               rounded-2xl flex flex-col items-center text-center
               hover:border-cyan-500/40 transition
+              backdrop-blur-md
             "
           >
             <span className="text-2xl sm:text-3xl font-black text-white">
@@ -563,6 +630,7 @@ export default function Home() {
             className="
               p-5 bg-slate-900/40 border border-slate-800
               rounded-2xl hover:bg-slate-900/60 transition
+              backdrop-blur-md
             "
           >
             <div className="flex items-center gap-5">
@@ -582,7 +650,7 @@ export default function Home() {
         ))}
       </div>
 
-      {/* EXPERIENCE TEXT – MOUSE TRACING */}
+      {/* EXPERIENCE TEXT */}
       <MouseTrace className="space-y-6 order-1 lg:order-2">
         <h2 className="text-3xl sm:text-4xl md:text-6xl font-black italic uppercase tracking-tighter text-white">
           The <span className="text-cyan-500">Reflexons</span> <br />
@@ -592,13 +660,12 @@ export default function Home() {
         <div className="space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed">
           <p>
             Born in <span className="text-white font-semibold">1985</span>,
-            Reflexons is the signature Annual Tech Fest and Reunion of CUCSE,
-            where innovation meets tradition.
+            Reflexons is the signature Annual Tech Fest and Reunion of CUCSE.
           </p>
           <p>
             From <span className="text-cyan-400">Coding Combat</span> to
             <span className="text-cyan-400"> Robotics</span>, it unites students,
-            alumni, and industry under one shared experience.
+            alumni, and industry.
           </p>
         </div>
       </MouseTrace>
