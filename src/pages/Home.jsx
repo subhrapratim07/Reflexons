@@ -251,14 +251,14 @@ export default function Home() {
         >
           {[
     { date: "FEB 27", events: ["Code Combat", "Sudoku"] },
-    { date: "FEB 28", events: ["Badminton"] },
+    { date: "FEB 28", events: ["Quiz"] },
     { date: "MAR 01", events: ["Football", "Capture the Flag"] },
     { date: "MAR 02", events: ["Blood on the Clocktower"] },
     { date: "MAR 05", events: ["Debate", "BGMI"] },
     { date: "MAR 06", events: ["Chess"] },
     { date: "MAR 07", events: ["Hackathon"] },
     { date: "MAR 08", events: ["Cricket", "eFootball (Online)"] },
-    { date: "MAR 09", events: ["Quiz", "eFootball (Offline)"] },
+    { date: "MAR 09", events: ["Badminton", "eFootball (Offline)"] },
     { date: "MAR 10", events: ["Free Fire"] },
     { date: "MAR 11", events: ["Treasure Hunt"] },
     { date: "MAR 12", events: ["Valorant", "eAFC"] },
@@ -752,7 +752,7 @@ export default function Home() {
   "
 >
   {[
-    { name: "Soumili Saha", role: "Treasurer" },
+    { name: "Soumili Ray", role: "Treasurer" },
     { name: "Debasmita Sen & Tirtharoop Banerjee", role: "Asst. Treasurer" },
     { name: "Shaswata Mukherjee", role: "Indoor Games Secretary" },
     { name: "Mafyul Islam", role: "Outdoor Games Secretary" },
@@ -902,7 +902,7 @@ export default function Home() {
 
           <div className="flex justify-between items-center">
             <div>
-              <p className="font-bold">Soumili Saha</p>
+              <p className="font-bold">Soumili Ray</p>
               <p className="text-slate-400 text-sm">+91 94331 69204</p>
             </div>
             <div className="p-3 bg-cyan-500/10 rounded-full text-cyan-500">
