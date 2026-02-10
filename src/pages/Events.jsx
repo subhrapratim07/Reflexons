@@ -30,6 +30,8 @@ export default function Events() {
       description: "Competitive coding battle testing logic, speed, and accuracy.",
       formLink: "https://docs.google.com/forms/d/e/1FAIpQLSeiIwkcfak1olPtcgSFTz7q82UIMUWHJakoBIPaOppVywm43Q/viewform",
       image: "https://i.ibb.co/hR0PKfc2/code-combat.jpg",
+      featured: true,
+
     },
     {
       id: 2,
@@ -50,6 +52,8 @@ export default function Events() {
       description: "Build innovative solutions in a high-intensity hackathon.",
       formLink: "https://docs.google.com/forms/d/e/1FAIpQLScQGdLgD49HjMhYIduyOpQ8YV46qF0My4VzDyHPOhz7qZBqEg/viewform",
       image: "https://i.ibb.co/77057XB/nextgenhack.png",
+      featured: true,
+
     },
     {
       id: 4,
@@ -78,8 +82,9 @@ export default function Events() {
       date: "Mar 05",
       venue: "206",
       description: "Showcase critical thinking.",
-      formLink: "https://forms.gle/xxx",
-      image: "https://i.ibb.co/wFdgxbF4/Gemini-Generated-Image-fbg8n0fbg8n0fbg8.png",
+      formLink: "https://docs.google.com/forms/d/e/1FAIpQLSf407Tys1tiX8NwOsNYY4JgFUEBbLtxUfMnr01B786s0jJ_4g/viewform",
+      image: "https://i.ibb.co/k2BYx8TQ/Debate.jpg",
+      featured: true,
     },
     {
       id: 7,
@@ -90,6 +95,7 @@ export default function Events() {
       description: "Logic-based puzzle competition.",
       formLink: "https://docs.google.com/forms/d/e/1FAIpQLScOjxKeb_uJOO7A_PhV1svBnGlVCWEDgtlodRgGW_GflNWr1g/viewform",
       image: "https://i.ibb.co/27n6q51N/Nine-x-nine-sudoko.jpg",
+      featured: true,
     },
     {
       id: 8,
@@ -110,6 +116,7 @@ export default function Events() {
       description: "Battle royale esports showdown.",
       formLink: "https://docs.google.com/forms/d/e/1FAIpQLSdhoW2e0ezFSeqKYmgZOCBJOdjPUJnqZDAgEbtBIJNKlDzNxg/viewform",
       image: "https://i.ibb.co/ZzYrs6g7/BGMI.jpg",
+      featured: true,
     },
     {
       id: 10,
@@ -148,8 +155,9 @@ export default function Events() {
       date: "Mar 08-09",
       venue: "Online/Offline",
       description: "Competitive football esports.",
-      formLink: "https://forms.gle/xxx",
-      image: "https://i.ibb.co/wFdgxbF4/Gemini-Generated-Image-fbg8n0fbg8n0fbg8.png",
+      formLink: "https://docs.google.com/forms/d/e/1FAIpQLSc5UkzzWXOri9JdvnDR2F7_rn-bFAmzdPSyn62XF0AxKkTPOA/viewform",
+      image: "https://i.ibb.co/PsGcQjnm/e-Football.jpg",
+      featured: true,
     },
     {
       id: 14,
@@ -226,11 +234,7 @@ export default function Events() {
   ];
 
 
-  const filteredEvents = events.filter(
-    (e) =>
-      (activeCategory === "All" || e.category === activeCategory) &&
-      e.title.toLowerCase().includes(search.toLowerCase())
-  );
+ const filteredEvents = events .filter( (e) => (activeCategory === "All" || e.category === activeCategory) && e.title.toLowerCase().includes(search.toLowerCase()) ) .sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
 
   return (
     <motion.div className="bg-slate-950 min-h-screen px-5 sm:px-6 lg:px-8 py-14 text-white">
