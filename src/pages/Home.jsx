@@ -867,6 +867,7 @@ export default function Home() {
     initial="hidden"
     whileInView="show"
     viewport={{ once: true }}
+    style={{ pointerEvents: "auto" }}
     className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12"
   >
 
@@ -891,39 +892,38 @@ export default function Home() {
           </p>
 
           {/* Shashwata */}
-          <div className="flex justify-between items-center mb-4">
+          <a
+            href="tel:+919330129904"
+            className="flex justify-between items-center mb-4 w-full touch-manipulation"
+          >
             <div>
               <p className="font-bold">Shashwata Mukherjee</p>
-
-              {/* Clickable Number */}
-              <a href="tel:+919330129904" className="text-slate-400 text-sm hover:text-cyan-400 transition">
+              <p className="text-slate-400 text-sm">
                 +91 93301 29904
-              </a>
+              </p>
             </div>
 
-            <a href="tel:+919330129904">
-              <div className="p-3 bg-cyan-500/10 rounded-full text-cyan-500 cursor-pointer hover:bg-cyan-500/20 transition">
-                📞
-              </div>
-            </a>
-          </div>
+            <div className="p-4 bg-cyan-500/10 rounded-full text-cyan-500 hover:bg-cyan-500/20 active:scale-95 transition">
+              📞
+            </div>
+          </a>
 
           {/* Soumili */}
-          <div className="flex justify-between items-center">
+          <a
+            href="tel:+919433169204"
+            className="flex justify-between items-center w-full touch-manipulation"
+          >
             <div>
               <p className="font-bold">Soumili Ray</p>
-
-              <a href="tel:+919433169204" className="text-slate-400 text-sm hover:text-cyan-400 transition">
+              <p className="text-slate-400 text-sm">
                 +91 94331 69204
-              </a>
+              </p>
             </div>
 
-            <a href="tel:+919433169204">
-              <div className="p-3 bg-cyan-500/10 rounded-full text-cyan-500 cursor-pointer hover:bg-cyan-500/20 transition">
-                📞
-              </div>
-            </a>
-          </div>
+            <div className="p-4 bg-cyan-500/10 rounded-full text-cyan-500 hover:bg-cyan-500/20 active:scale-95 transition">
+              📞
+            </div>
+          </a>
         </motion.div>
 
         {/* PR Inquiries */}
@@ -936,21 +936,21 @@ export default function Home() {
             PR Inquiries
           </p>
 
-          <div className="flex justify-between items-center">
+          <a
+            href="tel:+919903783336"
+            className="flex justify-between items-center w-full touch-manipulation"
+          >
             <div>
               <p className="font-bold">Debmalya Ghosh</p>
-
-              <a href="tel:+919903783336" className="text-slate-400 text-sm hover:text-cyan-400 transition">
+              <p className="text-slate-400 text-sm">
                 +91 99037 83336
-              </a>
+              </p>
             </div>
 
-            <a href="tel:+919903783336">
-              <div className="p-3 bg-cyan-500/10 rounded-full text-cyan-500 cursor-pointer hover:bg-cyan-500/20 transition">
-                📞
-              </div>
-            </a>
-          </div>
+            <div className="p-4 bg-cyan-500/10 rounded-full text-cyan-500 hover:bg-cyan-500/20 active:scale-95 transition">
+              📞
+            </div>
+          </a>
         </motion.div>
       </div>
     </motion.div>
@@ -965,13 +965,19 @@ export default function Home() {
         Address
       </h3>
 
-      <div className="space-y-4 text-slate-300">
+      {/* Clickable Google Maps */}
+      <a
+        href="https://maps.google.com/?q=JD-2,Sector+3,Salt+Lake+City,Kolkata+700098"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="space-y-4 text-slate-300 touch-manipulation"
+      >
         <p>JD-2, Sector 3,</p>
         <p>Salt Lake City, Calcutta University (Technology Campus),</p>
         <p className="font-bold text-white">
           Kolkata - 700098, West Bengal, India
         </p>
-      </div>
+      </a>
 
       <div className="mt-10 pt-10 border-t border-white/10">
         <p className="text-xs uppercase text-slate-500 tracking-widest mb-2">
@@ -981,14 +987,17 @@ export default function Home() {
         <p className="text-xl font-bold">Richik Mallick</p>
 
         {/* Clickable Phone */}
-        <a href="tel:+918906743263" className="text-cyan-400 hover:text-cyan-300 transition">
+        <a
+          href="tel:+918906743263"
+          className="block text-cyan-400 hover:text-cyan-300 transition touch-manipulation"
+        >
           +91 89067 43263
         </a>
 
         {/* Clickable Email */}
         <a
           href="mailto:reflexonscucse.tech@gmail.com"
-          className="block text-slate-400 text-sm hover:text-cyan-400 transition"
+          className="block text-slate-400 text-sm hover:text-cyan-400 transition touch-manipulation"
         >
           reflexonscucse.tech@gmail.com
         </a>
