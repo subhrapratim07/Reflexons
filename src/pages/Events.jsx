@@ -40,7 +40,7 @@ export default function Events() {
       date: "Mar 01",
       venue: "Online",
       description: "Cybersecurity challenge to exploit systems.",
-      formLink: "https://forms.gle/xxx",
+      formLink: "/",
       image: "https://i.ibb.co/wFdgxbF4/Gemini-Generated-Image-fbg8n0fbg8n0fbg8.png",
     },
     {
@@ -62,7 +62,7 @@ export default function Events() {
       date: "Mar 06",
       venue: "206 / 404",
       description: "Classic battle of minds.",
-      formLink: "https://forms.gle/xxx",
+      formLink: "/",
       image: "https://i.ibb.co/wFdgxbF4/Gemini-Generated-Image-fbg8n0fbg8n0fbg8.png",
     },
     {
@@ -72,8 +72,9 @@ export default function Events() {
       date: "Feb 28",
       venue: "206",
       description: "Fast-paced quiz competition.",
-      formLink: "https://forms.gle/xxx",
-      image: "https://i.ibb.co/wFdgxbF4/Gemini-Generated-Image-fbg8n0fbg8n0fbg8.png",
+      formLink: "https://docs.google.com/forms/d/e/1FAIpQLSdRKvefa-pdSjCuByZEjV3R7j9mW3i3uGFwQ-Uk_se6XunCnA/viewform",
+      image: "https://i.ibb.co/fVxd7yf2/Chaturanga.jpg",
+      featured: true,
     },
     {
       id: 6,
@@ -104,7 +105,7 @@ export default function Events() {
       date: "Mar 02",
       venue: "TBA",
       description: "Social deduction game.",
-      formLink: "https://forms.gle/xxx",
+      formLink: "/",
       image: "https://i.ibb.co/wFdgxbF4/Gemini-Generated-Image-fbg8n0fbg8n0fbg8.png",
     },
     {
@@ -125,7 +126,7 @@ export default function Events() {
       date: "Mar 10",
       venue: "GF",
       description: "Mobile esports competition.",
-      formLink: "https://forms.gle/xxx",
+      formLink: "/",
       image: "https://i.ibb.co/wFdgxbF4/Gemini-Generated-Image-fbg8n0fbg8n0fbg8.png",
     },
     {
@@ -135,7 +136,7 @@ export default function Events() {
       date: "Mar 12-13",
       venue: "206",
       description: "Tactical shooter tournament.",
-      formLink: "https://forms.gle/xxx",
+      formLink: "/",
       image: "https://i.ibb.co/wFdgxbF4/Gemini-Generated-Image-fbg8n0fbg8n0fbg8.png",
     },
     {
@@ -145,7 +146,7 @@ export default function Events() {
       date: "Mar 12",
       venue: "209",
       description: "Football gaming competition.",
-      formLink: "https://forms.gle/xxx",
+      formLink: "/",
       image: "https://i.ibb.co/wFdgxbF4/Gemini-Generated-Image-fbg8n0fbg8n0fbg8.png",
     },
     {
@@ -166,7 +167,7 @@ export default function Events() {
       date: "Mar 13",
       venue: "TBA",
       description: "Autonomous robot racing.",
-      formLink: "https://forms.gle/xxx",
+      formLink: "/",
       image: "https://i.ibb.co/wFdgxbF4/Gemini-Generated-Image-fbg8n0fbg8n0fbg8.png",
     },
     {
@@ -176,7 +177,7 @@ export default function Events() {
       date: "Mar 09",
       venue: "Campus Ground",
       description: "Agility and endurance matches.",
-      formLink: "https://forms.gle/xxx",
+      formLink: "/",
       image: "https://i.ibb.co/wFdgxbF4/Gemini-Generated-Image-fbg8n0fbg8n0fbg8.png",
     },
     {
@@ -186,8 +187,9 @@ export default function Events() {
       date: "Mar 01",
       venue: "Campus Ground",
       description: "Inter-team football matches.",
-      formLink: "https://forms.gle/xxx",
-      image: "https://i.ibb.co/wFdgxbF4/Gemini-Generated-Image-fbg8n0fbg8n0fbg8.png",
+      formLink: "",
+      image: "https://i.ibb.co/S743nJ5R/Football.png",
+      featured: true,
     },
     {
       id: 17,
@@ -196,7 +198,7 @@ export default function Events() {
       date: "Mar 08",
       venue: "Campus Ground",
       description: "Full-scale cricket tournament.",
-      formLink: "https://forms.gle/xxx",
+      formLink: "/",
       image: "https://i.ibb.co/wFdgxbF4/Gemini-Generated-Image-fbg8n0fbg8n0fbg8.png",
     },
     {
@@ -206,7 +208,7 @@ export default function Events() {
       date: "Mar 11",
       venue: "206 / 207",
       description: "Solve clues and uncover treasure.",
-      formLink: "https://forms.gle/xxx",
+      formLink: "/",
       image: "https://i.ibb.co/wFdgxbF4/Gemini-Generated-Image-fbg8n0fbg8n0fbg8.png",
     },
 
@@ -216,7 +218,7 @@ export default function Events() {
       title: "Internal Cultural Fest",
       category: "Cultural",
       date: "Mar 14",
-      venue: "Campus Auditorium",
+      venue: "Campus Ground",
       description: "Internal cultural performances by students.",
       comingSoon: true,
       image: "https://i.ibb.co/wFdgxbF4/Gemini-Generated-Image-fbg8n0fbg8n0fbg8.png",
@@ -226,7 +228,7 @@ export default function Events() {
       title: "External Cultural Band Night",
       category: "Cultural",
       date: "Mar 15",
-      venue: "Main Stage",
+      venue: "Campus Ground",
       description: "Live external band performance.",
       comingSoon: true,
       image: "https://i.ibb.co/wFdgxbF4/Gemini-Generated-Image-fbg8n0fbg8n0fbg8.png",

@@ -251,15 +251,14 @@ export default function Home() {
         >
           {[
     { date: "FEB 27", events: ["Code Combat", "Sudoku"] },
-    { date: "FEB 28", events: ["Quiz"] },
-    { date: "MAR 01", events: ["Football"] },
+    { date: "MAR 01", events: ["Football","Capture the Flag"] },
     { date: "MAR 02", events: ["Blood on the Clocktower"] },
     { date: "MAR 05", events: ["Debate", "BGMI"] },
     { date: "MAR 06", events: ["Chess"] },
-    { date: "MAR 07", events: ["Hackathon"] },
-    { date: "MAR 08", events: ["Cricket", "Capture the Flag"] },
+    { date: "MAR 07", events: ["Free Fire","Quiz"] },
+    { date: "MAR 08", events: ["Cricket"] },
     { date: "MAR 09", events: ["Badminton", "eFootball"] },
-    { date: "MAR 10", events: ["Free Fire"] },
+    { date: "MAR 10", events: ["Hackathon"] },
     { date: "MAR 11", events: ["Treasure Hunt"] },
     { date: "MAR 12", events: ["Valorant", "eAFC"] },
     { date: "MAR 13", events: ["Valorant"] },
@@ -397,7 +396,7 @@ export default function Home() {
       transition={{ delay: 0.25, duration: 0.7 }}
       className="text-slate-200 mb-10 max-w-xl mx-auto text-sm sm:text-base font-medium"
     >
-      Dive into competitions, workshops, talks, and unforgettable experiences.
+      Hosting a powerhouse lineup of esports, athletic challenges, and strategic competitions.
     </motion.p>
 
     <motion.div
@@ -754,7 +753,7 @@ export default function Home() {
   {[
     { name: "Soumili Ray", role: "Treasurer" },
     { name: "Debasmita Sen & Tirtharoop Banerjee", role: "Asst. Treasurer" },
-    { name: "Shaswata Mukherjee", role: "Indoor Games Secretary" },
+    { name: "Shashwata Mukherjee", role: "Indoor Games Secretary" },
     { name: "Mafyul Islam", role: "Outdoor Games Secretary" },
     { name: "Chayan Maity & Subhra Pratim Mondal", role: "Cultural Secretary" },
     { name: "Debmalya Ghosh", role: "Graphics Designer" }
@@ -860,6 +859,7 @@ export default function Home() {
 
 
 
+
   {/* ================= CONTACT US ================= */}
 <section className="py-24 px-6 bg-slate-950 relative">
   <motion.div
@@ -890,24 +890,39 @@ export default function Home() {
             Event Inquiries
           </p>
 
+          {/* Shashwata */}
           <div className="flex justify-between items-center mb-4">
             <div>
-              <p className="font-bold">Shaswata Mukherjee</p>
-              <p className="text-slate-400 text-sm">+91 93301 29904</p>
+              <p className="font-bold">Shashwata Mukherjee</p>
+
+              {/* Clickable Number */}
+              <a href="tel:+919330129904" className="text-slate-400 text-sm hover:text-cyan-400 transition">
+                +91 93301 29904
+              </a>
             </div>
-            <div className="p-3 bg-cyan-500/10 rounded-full text-cyan-500">
-              📞
-            </div>
+
+            <a href="tel:+919330129904">
+              <div className="p-3 bg-cyan-500/10 rounded-full text-cyan-500 cursor-pointer hover:bg-cyan-500/20 transition">
+                📞
+              </div>
+            </a>
           </div>
 
+          {/* Soumili */}
           <div className="flex justify-between items-center">
             <div>
               <p className="font-bold">Soumili Ray</p>
-              <p className="text-slate-400 text-sm">+91 94331 69204</p>
+
+              <a href="tel:+919433169204" className="text-slate-400 text-sm hover:text-cyan-400 transition">
+                +91 94331 69204
+              </a>
             </div>
-            <div className="p-3 bg-cyan-500/10 rounded-full text-cyan-500">
-              📞
-            </div>
+
+            <a href="tel:+919433169204">
+              <div className="p-3 bg-cyan-500/10 rounded-full text-cyan-500 cursor-pointer hover:bg-cyan-500/20 transition">
+                📞
+              </div>
+            </a>
           </div>
         </motion.div>
 
@@ -924,11 +939,17 @@ export default function Home() {
           <div className="flex justify-between items-center">
             <div>
               <p className="font-bold">Debmalya Ghosh</p>
-              <p className="text-slate-400 text-sm">+91 99037 83336</p>
+
+              <a href="tel:+919903783336" className="text-slate-400 text-sm hover:text-cyan-400 transition">
+                +91 99037 83336
+              </a>
             </div>
-            <div className="p-3 bg-cyan-500/10 rounded-full text-cyan-500">
-              📞
-            </div>
+
+            <a href="tel:+919903783336">
+              <div className="p-3 bg-cyan-500/10 rounded-full text-cyan-500 cursor-pointer hover:bg-cyan-500/20 transition">
+                📞
+              </div>
+            </a>
           </div>
         </motion.div>
       </div>
@@ -956,16 +977,27 @@ export default function Home() {
         <p className="text-xs uppercase text-slate-500 tracking-widest mb-2">
           General Secretary
         </p>
+
         <p className="text-xl font-bold">Richik Mallick</p>
-        <p className="text-cyan-400">+91 89067 43263</p>
-        <p className="text-slate-400 text-sm">
+
+        {/* Clickable Phone */}
+        <a href="tel:+918906743263" className="text-cyan-400 hover:text-cyan-300 transition">
+          +91 89067 43263
+        </a>
+
+        {/* Clickable Email */}
+        <a
+          href="mailto:reflexonscucse.tech@gmail.com"
+          className="block text-slate-400 text-sm hover:text-cyan-400 transition"
+        >
           reflexonscucse.tech@gmail.com
-        </p>
+        </a>
       </div>
     </motion.div>
 
   </motion.div>
 </section>
+
 
 
     </motion.div>
