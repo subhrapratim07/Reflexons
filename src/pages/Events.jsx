@@ -51,7 +51,7 @@ export default function Events() {
       venue: "206",
       description: "Build innovative solutions in a high-intensity hackathon.",
       formLink: "https://docs.google.com/forms/d/e/1FAIpQLScQGdLgD49HjMhYIduyOpQ8YV46qF0My4VzDyHPOhz7qZBqEg/viewform",
-      image: "https://i.ibb.co/77057XB/nextgenhack.png",
+      image: "https://i.ibb.co/5xGXvLJ5/nexgenhack.jpg",
       featured: true,
 
     },
@@ -187,8 +187,8 @@ export default function Events() {
       date: "Mar 01",
       venue: "Campus Ground",
       description: "Inter-team football matches.",
-      formLink: "",
-      image: "https://i.ibb.co/S743nJ5R/Football.png",
+      formLink: "/",
+      image: "https://i.ibb.co/VYHyWT4X/football.jpg",
       featured: true,
     },
     {
