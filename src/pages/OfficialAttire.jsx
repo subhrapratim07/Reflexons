@@ -97,7 +97,7 @@ export default function OfficialAttire() {
                     Price
                   </p>
                   <p className="text-lg font-black text-cyan-400">
-                    ₹249
+                    ₹250
                   </p>
                 </div>
 
@@ -136,7 +136,7 @@ export default function OfficialAttire() {
               {/* REGISTER CTA */}
               <Magnetic>
                 <a
-                  href="https://forms.gle/your-attire-registration-link"
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSemHUUJUhNKhDD-4oxJQaeSgT6M19gFg4vuGMlSqr5PeFIteA/viewform"
                   target="_blank"
                   rel="noreferrer"
                   className="block text-center bg-cyan-600 hover:bg-cyan-500
@@ -185,11 +185,9 @@ export default function OfficialAttire() {
                   <div className="relative">
                     <span className="absolute -left-[30px] top-1 w-4 h-4 bg-cyan-500 rounded-full" />
                     <p className="text-xs uppercase text-cyan-400 font-bold">
-                      Order by Feb 5
+                      Order by Feb 20
                     </p>
-                    <p className="text-sm text-slate-400">
-                      Expected delivery by Feb 15
-                    </p>
+                    
                   </div>
                 </div>
 
