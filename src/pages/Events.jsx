@@ -136,7 +136,8 @@ export default function Events() {
     venue: "Campus Ground",
     description: "Full-scale cricket tournament.",
     formLink: "/",
-    image: "https://i.ibb.co/wFdgxbF4/Gemini-Generated-Image-fbg8n0fbg8n0fbg8.png",
+    image: "https://i.ibb.co/1YPrcbj6/cricket.jpg",
+    featured: true,
   },
   {
     id: 13,
@@ -146,7 +147,8 @@ export default function Events() {
     venue: "Campus Ground",
     description: "Agility and endurance matches.",
     formLink: "/",
-    image: "https://i.ibb.co/wFdgxbF4/Gemini-Generated-Image-fbg8n0fbg8n0fbg8.png",
+    image: "https://i.ibb.co/VpQL47Xp/smash.jpg",
+    featured: true,
   },
   {
     id: 14,
