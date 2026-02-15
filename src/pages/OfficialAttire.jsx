@@ -1,211 +1,222 @@
-import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import Reveal from "../components/Reveal";
 import Magnetic from "../components/Magnetic";
 
-import frontImg from "../assets/frontside.png";
-import backImg from "../assets/backside.png";
+import { Canvas } from "@react-three/fiber";
+import {
+  useGLTF,
+  OrbitControls,
+  ContactShadows,
+  Center,
+  Bounds,
+  Environment,
+} from "@react-three/drei";
+
+import * as THREE from "three";
 
 /* ================= PAGE TRANSITION ================= */
 const pageVariants = {
-  initial: { opacity: 0, y: 40, filter: "blur(10px)" },
-  animate: {
-    opacity: 1,
-    y: 0,
-    filter: "blur(0)",
-    transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] },
-  },
-  exit: {
-    opacity: 0,
-    y: -40,
-    filter: "blur(10px)",
-    transition: { duration: 0.6 },
-  },
+  initial: { opacity: 0, y: 40 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -40 },
 };
 
+/* ================= MODEL ================= */
+function Model() {
+  const { scene } = useGLTF("/models/tshirt.glb");
+
+  scene.traverse((child) => {
+    if (child.isMesh && child.material) {
+
+      // preserve original color
+      child.material.toneMapped = false;
+
+      // improve texture detail visibility
+      child.material.roughness = 0.65;
+      child.material.metalness = 0.05;
+
+      // improve sharpness
+      if (child.material.map) {
+        child.material.map.anisotropy = 16;
+      }
+
+      child.material.needsUpdate = true;
+    }
+  });
+
+  return (
+    <Center>
+      <primitive object={scene} />
+    </Center>
+  );
+}
+
+/* ================= MAIN ================= */
 export default function OfficialAttire() {
-  const [rotation, setRotation] = useState(0);
-  const startX = useRef(0);
-
-  const handleStart = (e) => {
-    startX.current = e.touches ? e.touches[0].clientX : e.clientX;
-  };
-
-  const handleMove = (e) => {
-    if (!startX.current) return;
-    const x = e.touches ? e.touches[0].clientX : e.clientX;
-    const delta = x - startX.current;
-    setRotation((prev) => prev + delta * 0.3);
-    startX.current = x;
-  };
-
-  const handleEnd = () => {
-    startX.current = 0;
-  };
-
-  const handleWheel = (e) => {
-    setRotation((prev) => prev + e.deltaY * 0.1);
-  };
-
   return (
     <motion.div
       variants={pageVariants}
       initial="initial"
       animate="animate"
       exit="exit"
-      className="bg-slate-950 text-white min-h-screen px-4 sm:px-6 py-16"
+      className="bg-slate-950 text-white min-h-screen px-4 py-16"
     >
       <div className="max-w-7xl mx-auto">
 
-        {/* ================= HEADER ================= */}
+        {/* HEADER */}
         <Reveal>
-          <h1 className="text-center text-4xl md:text-5xl font-black uppercase mb-10">
+          <h1 className="text-center text-4xl md:text-5xl font-black mb-10">
             <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-              Official Attire
+              OFFICIAL ATTIRE
             </span>
           </h1>
         </Reveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
 
-          {/* ================= LEFT : PRODUCT PREVIEW ================= */}
-          <Reveal delay={0.1}>
+          {/* LEFT */}
+          <Reveal>
             <div className="space-y-6">
 
-              <motion.div
-                onMouseDown={handleStart}
-                onMouseMove={handleMove}
-                onMouseUp={handleEnd}
-                onMouseLeave={handleEnd}
-                onTouchStart={handleStart}
-                onTouchMove={handleMove}
-                onTouchEnd={handleEnd}
-                onWheel={handleWheel}
-                whileHover={{ y: -4 }}
-                className="relative h-[420px] bg-slate-900/40 border border-slate-800
-                           rounded-3xl flex items-center justify-center
-                           cursor-grab select-none overflow-hidden"
-              >
-                {/* Glow */}
-                <div className="absolute w-[300px] h-[300px] rounded-full bg-cyan-500/25 blur-[120px]" />
+              {/* PREMIUM GRADIENT CARD */}
+<motion.div
+  whileHover={{ y: -4 }}
+  className="
+    relative
+    h-[420px]
+    rounded-3xl
+    overflow-hidden
+    border border-cyan-500/30
+    bg-gradient-to-br
+    from-[#e0f2fe]
+    via-[#f0f9ff]
+    to-[#cffafe]
+    shadow-[0_0_40px_rgba(6,182,212,0.25)]
+  "
+>
 
-                {/* Price */}
-                <div className="absolute top-4 right-4 z-20 bg-slate-950/90
-                                backdrop-blur border border-cyan-500/40
-                                px-4 py-2 rounded-xl">
-                  <p className="text-[10px] uppercase tracking-widest text-slate-400">
-                    Price
-                  </p>
-                  <p className="text-lg font-black text-cyan-400">
-                    ₹250
-                  </p>
-                </div>
+  {/* glow accent */}
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(6,182,212,0.25),transparent_70%)] pointer-events-none" />
 
-                {/* 3D Shirt */}
-                <div
-                  className="relative w-[260px] h-[360px] z-10"
-                  style={{
-                    transformStyle: "preserve-3d",
-                    transform: `rotateY(${rotation}deg)`,
-                    transition: "transform 0.05s linear",
-                  }}
-                >
-                  <img
-                    src={frontImg}
-                    alt="Tshirt Front"
-                    className="absolute inset-0 w-full h-full object-contain"
-                    style={{ backfaceVisibility: "hidden" }}
-                  />
+  {/* price */}
+  <div className="absolute top-4 right-4 z-10 bg-white/80 backdrop-blur px-4 py-2 rounded-xl border border-cyan-400 shadow">
+    <p className="text-xs text-slate-500">PRICE</p>
+    <p className="text-lg font-bold text-cyan-600">₹250</p>
+  </div>
 
-                  <img
-                    src={backImg}
-                    alt="Tshirt Back"
-                    className="absolute inset-0 w-full h-full object-contain"
-                    style={{
-                      transform: "rotateY(180deg)",
-                      backfaceVisibility: "hidden",
-                    }}
-                  />
-                </div>
+  <Canvas
+    camera={{ fov: 45, position: [0, 0, 6] }}
+    shadows
+    gl={{
+      antialias: true,
+      toneMapping: THREE.NoToneMapping,
+      outputColorSpace: THREE.SRGBColorSpace,
+    }}
+  >
 
-                <p className="absolute bottom-4 text-xs text-slate-400">
-                  Drag / Swipe / Scroll to rotate
-                </p>
-              </motion.div>
+    {/* PREMIUM BACKGROUND COLOR */}
+    <color attach="background" args={["#e6f6ff"]} />
 
-              {/* REGISTER CTA */}
+    {/* KEY LIGHT */}
+    <directionalLight
+      position={[5, 6, 5]}
+      intensity={1.3}
+      castShadow
+    />
+
+    {/* SOFT FILL LIGHT */}
+    <directionalLight
+      position={[-5, 4, 5]}
+      intensity={0.6}
+    />
+
+    {/* RIM LIGHT */}
+    <directionalLight
+      position={[0, 5, -6]}
+      intensity={0.9}
+      color="#67e8f9"
+    />
+
+    {/* AMBIENT */}
+    <ambientLight intensity={0.7} />
+
+    {/* VERY SOFT ENVIRONMENT */}
+    <Environment preset="city" intensity={0.25} />
+
+    <Bounds fit clip observe margin={1.2}>
+      <Model />
+    </Bounds>
+
+    <ContactShadows
+      position={[0, -1.5, 0]}
+      opacity={0.35}
+      scale={10}
+      blur={2}
+    />
+
+    <OrbitControls
+      autoRotate
+      autoRotateSpeed={1}
+      enableZoom={false}
+      enablePan={false}
+    />
+
+  </Canvas>
+
+  <p className="absolute bottom-3 w-full text-center text-xs text-slate-600">
+    Drag to rotate
+  </p>
+
+</motion.div>
+
+              {/* BUTTON */}
               <Magnetic>
                 <a
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSemHUUJUhNKhDD-4oxJQaeSgT6M19gFg4vuGMlSqr5PeFIteA/viewform"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="block text-center bg-cyan-600 hover:bg-cyan-500
-                             text-black font-black uppercase tracking-widest
-                             py-4 rounded-2xl transition
-                             shadow-[0_0_30px_rgba(6,182,212,0.6)]"
+                  href="#"
+                  className="block text-center bg-cyan-600 hover:bg-cyan-500 text-black font-bold py-4 rounded-xl shadow-lg"
                 >
-                  Register & Order Now →
+                  REGISTER & ORDER NOW →
                 </a>
               </Magnetic>
 
             </div>
           </Reveal>
 
-          {/* ================= RIGHT : DETAILS ================= */}
-          <Reveal delay={0.2}>
+          {/* RIGHT */}
+          <Reveal>
             <div className="space-y-8">
 
-              {/* PRODUCT DETAILS */}
-              <motion.div
-                whileHover={{ y: -4 }}
-                className="bg-slate-900/40 border border-slate-800 rounded-3xl p-8"
-              >
-                <h3 className="text-cyan-500 font-black italic uppercase mb-4">
-                  Product Details
+              <div className="bg-slate-900/40 border border-slate-800 rounded-3xl p-8">
+                <h3 className="text-cyan-400 font-bold mb-4">
+                  PRODUCT DETAILS
                 </h3>
-                <ul className="text-slate-400 text-sm space-y-2">
+
+                <ul className="text-slate-400 space-y-2 text-sm">
                   <li>• Official Reflexons’26 T-Shirt</li>
                   <li>• Premium fabric & print</li>
                   <li>• Unisex fit</li>
                   <li>• Limited stock available</li>
                   <li>• Payment details shared after registration</li>
                 </ul>
-              </motion.div>
 
-              {/* IMPORTANT DATES */}
-              <motion.div
-                whileHover={{ y: -4 }}
-                className="bg-slate-900/40 border border-slate-800 rounded-3xl p-8"
-              >
-                <h3 className="text-cyan-500 font-black italic uppercase mb-6">
-                  Important Dates
+              </div>
+
+              <div className="bg-slate-900/40 border border-slate-800 rounded-3xl p-8">
+                <h3 className="text-cyan-400 font-bold mb-4">
+                  IMPORTANT DATES
                 </h3>
 
-                <div className="space-y-5 border-l-2 border-slate-800 pl-6">
-                  <div className="relative">
-                    <span className="absolute -left-[30px] top-1 w-4 h-4 bg-cyan-500 rounded-full" />
-                    <p className="text-xs uppercase text-cyan-400 font-bold">
-                      Order by Feb 20
-                    </p>
-                    
-                  </div>
-                </div>
+                <p className="text-cyan-400 font-semibold">
+                  Order by Feb 20
+                </p>
 
-                <div className="mt-8 p-4 border border-cyan-500/30
-                                bg-cyan-500/5 rounded-2xl text-center">
-                  <p className="text-cyan-400 font-bold uppercase text-sm italic">
-                    Hurry Up!
-                  </p>
-                  <p className="text-slate-400 text-xs">
-                    Limited quantity available.
-                  </p>
-                </div>
-              </motion.div>
+              </div>
 
             </div>
           </Reveal>
 
         </div>
+
       </div>
     </motion.div>
   );
