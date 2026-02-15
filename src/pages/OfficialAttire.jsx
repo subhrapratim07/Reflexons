@@ -86,23 +86,20 @@ export default function OfficialAttire() {
     h-[420px]
     rounded-3xl
     overflow-hidden
-    border border-cyan-500/30
+    border border-cyan-400/30
+
+    /* UNIQUE PREMIUM BACKGROUND */
     bg-gradient-to-br
-    from-[#e0f2fe]
-    via-[#f0f9ff]
+    from-[#ecfeff]
+    via-[#e0f2fe]
     to-[#cffafe]
-    shadow-[0_0_40px_rgba(6,182,212,0.25)]
+
+    shadow-[0_0_60px_rgba(6,182,212,0.25)]
   "
 >
 
-  {/* glow accent */}
-  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(6,182,212,0.25),transparent_70%)] pointer-events-none" />
-
-  {/* price */}
-  <div className="absolute top-4 right-4 z-10 bg-white/80 backdrop-blur px-4 py-2 rounded-xl border border-cyan-400 shadow">
-    <p className="text-xs text-slate-500">PRICE</p>
-    <p className="text-lg font-bold text-cyan-600">₹250</p>
-  </div>
+  {/* glow layer */}
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(6,182,212,0.25),transparent_70%)] pointer-events-none" />
 
   <Canvas
     camera={{ fov: 45, position: [0, 0, 6] }}
@@ -111,36 +108,28 @@ export default function OfficialAttire() {
       antialias: true,
       toneMapping: THREE.NoToneMapping,
       outputColorSpace: THREE.SRGBColorSpace,
+      alpha: true, // IMPORTANT
     }}
   >
 
-    {/* PREMIUM BACKGROUND COLOR */}
-    <color attach="background" args={["#e6f6ff"]} />
+    {/* REMOVE white background line completely */}
 
-    {/* KEY LIGHT */}
+    {/* balanced lighting */}
+    <ambientLight intensity={0.8} />
+
     <directionalLight
       position={[5, 6, 5]}
-      intensity={1.3}
+      intensity={1.2}
       castShadow
     />
 
-    {/* SOFT FILL LIGHT */}
     <directionalLight
-      position={[-5, 4, 5]}
+      position={[-5, 3, -5]}
       intensity={0.6}
+      color="#22d3ee"
     />
 
-    {/* RIM LIGHT */}
-    <directionalLight
-      position={[0, 5, -6]}
-      intensity={0.9}
-      color="#67e8f9"
-    />
-
-    {/* AMBIENT */}
-    <ambientLight intensity={0.7} />
-
-    {/* VERY SOFT ENVIRONMENT */}
+    {/* soft environment */}
     <Environment preset="city" intensity={0.25} />
 
     <Bounds fit clip observe margin={1.2}>
@@ -162,7 +151,6 @@ export default function OfficialAttire() {
     />
 
   </Canvas>
-
   <p className="absolute bottom-3 w-full text-center text-xs text-slate-600">
     Drag to rotate
   </p>
