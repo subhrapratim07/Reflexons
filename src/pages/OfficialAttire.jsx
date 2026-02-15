@@ -100,7 +100,11 @@ export default function OfficialAttire() {
 
   {/* glow layer */}
   <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(6,182,212,0.25),transparent_70%)] pointer-events-none" />
-
+{/* PRICE */}
+                <div className="absolute top-4 right-4 z-10 bg-slate-950 px-4 py-2 rounded-xl border border-cyan-500">
+                  <p className="text-xs text-slate-400">PRICE</p>
+                  <p className="text-lg font-bold text-cyan-400">₹250</p>
+                </div>
   <Canvas
     camera={{ fov: 45, position: [0, 0, 6] }}
     shadows
@@ -160,7 +164,7 @@ export default function OfficialAttire() {
               {/* BUTTON */}
               <Magnetic>
                 <a
-                  href="#"
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSemHUUJUhNKhDD-4oxJQaeSgT6M19gFg4vuGMlSqr5PeFIteA/viewform"
                   className="block text-center bg-cyan-600 hover:bg-cyan-500 text-black font-bold py-4 rounded-xl shadow-lg"
                 >
                   REGISTER & ORDER NOW →
@@ -170,35 +174,33 @@ export default function OfficialAttire() {
             </div>
           </Reveal>
 
-          {/* RIGHT */}
-          <Reveal>
+          {/* RIGHT SIDE */}
+          <Reveal delay={0.2}>
             <div className="space-y-8">
 
-              <div className="bg-slate-900/40 border border-slate-800 rounded-3xl p-8">
-                <h3 className="text-cyan-400 font-bold mb-4">
-                  PRODUCT DETAILS
+              <motion.div className="bg-slate-900/40 border border-slate-800 rounded-3xl p-8">
+                <h3 className="text-cyan-500 font-black uppercase mb-4">
+                  Product Details
                 </h3>
 
-                <ul className="text-slate-400 space-y-2 text-sm">
+                <ul className="text-slate-400 text-sm space-y-2">
                   <li>• Official Reflexons’26 T-Shirt</li>
                   <li>• Premium fabric & print</li>
                   <li>• Unisex fit</li>
                   <li>• Limited stock available</li>
                   <li>• Payment details shared after registration</li>
                 </ul>
+              </motion.div>
 
-              </div>
-
-              <div className="bg-slate-900/40 border border-slate-800 rounded-3xl p-8">
-                <h3 className="text-cyan-400 font-bold mb-4">
-                  IMPORTANT DATES
+              <motion.div className="bg-slate-900/40 border border-slate-800 rounded-3xl p-8">
+                <h3 className="text-cyan-500 font-black uppercase mb-6">
+                  Important Dates
                 </h3>
 
-                <p className="text-cyan-400 font-semibold">
+                <p className="text-cyan-400 font-bold">
                   Order by Feb 20
                 </p>
-
-              </div>
+              </motion.div>
 
             </div>
           </Reveal>
