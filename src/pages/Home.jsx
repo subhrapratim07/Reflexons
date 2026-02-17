@@ -251,12 +251,13 @@ export default function Home() {
         >
           {[
     { date: "FEB 27", events: ["Code Combat", "Sudoku"] },
-    { date: "MAR 01", events: ["Football","Capture the Flag"] },
+    { date: "FEB 28", events: ["BGMI"] },
+    { date: "MAR 01", events: ["Cricket"] },
     { date: "MAR 02", events: ["Blood on the Clocktower"] },
-    { date: "MAR 05", events: ["Debate", "BGMI"] },
+    { date: "MAR 05", events: ["Debate"] },
     { date: "MAR 06", events: ["Chess"] },
     { date: "MAR 07", events: ["Free Fire","Quiz"] },
-    { date: "MAR 08", events: ["Cricket"] },
+    { date: "MAR 08", events: ["Football","Capture the Flag"] },
     { date: "MAR 09", events: ["Badminton", "eFootball"] },
     { date: "MAR 10", events: ["Hackathon"] },
     { date: "MAR 11", events: ["Treasure Hunt"] },
